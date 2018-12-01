@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie-edge">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie-edge">
 	<title></title>
 
 	<!-- Link to CSS -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-
-    <!-- Link to JavaScript-->
-    <script src="js/scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
+  <!-- Menu Slideout -->
+  <span id="show-menu-link"><a href="#" onclick="menu.slideout()">Show Menu</a></span>
+  <div style="display: none" id="menu-slideout">
+    <div id="main-menu">
+      <div class="menu-header">
+        <span>Main Menu</span>
+        <span><a href="#" onclick="menu.hideSlider()">&times</a></span>
+        <hr />
+      </div> <!-- menu-header -->
+      <div id="menu-options">
+        <a href="#" onclick="menu.showPage('change-background')">Change Background</a><br />
+        <a href="#">Filter Cards</a><br />
+        <a href="#">Copy Board</a><br />
+        <a href="#">Settings</a><br />
+      </div> <!-- menu-options -->
+    </div> <!-- main-menu -->
+    <!-- Reusable Menu Header -->
+    <div id="menu-pages">
+      <div id="menu-header" style="display: none">
+        <span><a href="#" onclick="menu.showMenu('change-background')">&#8592;</a></span>
+        <span id="header">Header</span>
+        <span><a href="#" onclick="menu.hideSlider()">&times</a></span>
+        <hr />
+      </div> <!-- menu-header -->
+      <!-- Change Background Page -->
+      <div id="change-background" style="display: none">
+        <input class="change-background-tile" style="background-color:rgb(0,121,191)" type="button" onclick="changeBackground('rgb(0,121,191)')" />
+        <input class="change-background-tile" style="background-color:rgb(210,144,52)" type="button" onclick="changeBackground('rgb(210,144,52)')" />
+        <input class="change-background-tile" style="background-color:rgb(81,152,57)" type="button" onclick="changeBackground('rgb(81,152,57)')" />
+      </div> <!-- change-background-content -->
+    </div> <!-- menu-pages -->
+  </div> <!-- menu-slideout -->
 
+  <!-- Link to JavaScript-->
+  <script src="js/scripts.js"></script>
 </body>
 </html>
