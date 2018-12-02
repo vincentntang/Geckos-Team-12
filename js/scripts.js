@@ -1,5 +1,4 @@
-// MENU SLIDEOUT 
-
+// *************** SLIDEOUT MENU SCRIPT ***************
 const headers = {
   'change-background': 'Change Background',
   'filter-cards-page': 'Filter Cards',
@@ -7,30 +6,22 @@ const headers = {
 };
 
 let menu = {
-  slideout: function() {
-    document.getElementById('menu-slideout').style.display = "block";
-    document.getElementById('show-menu-link').style.display = "none";
+  toggleSlideout: function() {
+    document.getElementById('menu-slideout').classList.toggle("element-invisible");
+    document.getElementById('show-menu-link').classList.toggle("element-invisible");
   },
-  showMenu: function(idToHide) {
-    document.getElementById('main-menu').style.display = "block";
-    document.getElementById(idToHide).style.display = "none";
-    document.getElementById('menu-header').style.display = "none";
+  toggleMainMenu: function(idToHide) {
+    document.getElementById('main-menu').classList.toggle("element-invisible");
+    document.getElementById(idToHide).classList.toggle("element-invisible");
+    document.getElementById('menu-header').classList.toggle("element-invisible");
   },
-  showPage: function(id) {
-    document.getElementById('menu-header').style.display = "block";
+  togglePage: function(id) {
+    document.getElementById('menu-header').classList.toggle("element-invisible");
     document.getElementById('header').innerHTML = headers[id];
-    document.getElementById(id).style.display = "block";
-    menu.hideMenu();
+    document.getElementById(id).classList.toggle("element-invisible");
+    menu.toggleMainMenu();
   },
-  hideMenu: function() {
-    document.getElementById('main-menu').style.display = "none";
-  },
-  hideSlider: function() {
-    document.getElementById('menu-slideout').style.display = "none";
-    document.getElementById('show-menu-link').style.display = "block";
+  changeBackground: function(color) {
+    document.body.style.background = color;
   }
 };
-
-function changeBackground(color) {
-  document.body.style.background = color;
-}

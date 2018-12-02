@@ -1,3 +1,4 @@
+/*************** SLIDEOUT MENU STYLES ***************/
 #menu {
   width: 15%;
   height: 80%;
@@ -8,24 +9,29 @@
 #menu-slideout {
   width: 20%;
   float: right;
+  transition: 0.5s;
 }
-
 #menu-slideout a, #show-menu-link a {
   text-decoration: none;
   color: inherit;
 }
-
 #change-background-page {
   display: none;
 }
-
 .change-background-tile {
   border: none;
   width: 50px;
   height: 50px;
   border-radius: 5px;
 }
-
 .change-background-tile:focus {
   outline: none;
+}
+.element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
 }
