@@ -13,14 +13,14 @@
 <body>
   <!-- *************** Menu *************** -->
   <!-- Menu Link -->
-  <span id="show-menu-link"><a href="#" onclick="menu.toggleSlideout()">Show Menu</a></span>
+  <span id="show-menu-link"><a href="#" onclick="menu.toggleMenuContainer()">Show Menu</a></span>
   <!-- Menu Slideout -->
-  <div class="element-invisible" id="menu-slideout">
+  <div class="element-invisible" id="menu-container">
     <!-- Main Menu -->
     <div id="main-menu">
       <div class="menu-header">
         <span>Main Menu</span>
-        <span><a href="#" onclick="menu.toggleSlideout()">&times</a></span>
+        <span><a href="#" onclick="menu.toggleMenuContainer()">&times</a></span>
         <hr />
       </div> <!-- menu-header -->
       <div id="menu-options">
@@ -35,7 +35,7 @@
       <div class="element-invisible" id="menu-header">
         <span><a href="#" onclick="menu.toggleMainMenu('change-background')">&#8592;</a></span>
         <span id="header">Header</span>
-        <span><a href="#" onclick="menu.toggleSlideout()">&times</a></span>
+        <span><a href="#" onclick="menu.toggleMenuContainer()">&times</a></span>
         <hr />
       </div> <!-- menu-header -->
       <!-- Change Background Page -->

@@ -6,12 +6,15 @@
 #show-menu-link {
   float: right;
 }
-#menu-slideout {
+#menu-container {
+  height: 80%;
   width: 20%;
   float: right;
-  transition: 0.5s;
+  overflow-x: hidden;
+  transition: all 0.5s ease-out;
+  padding-top: 10px;
 }
-#menu-slideout a, #show-menu-link a {
+#menu-container a, #show-menu-link a {
   text-decoration: none;
   color: inherit;
 }

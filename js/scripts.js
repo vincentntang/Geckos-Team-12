@@ -6,8 +6,8 @@ const headers = {
 };
 
 let menu = {
-  toggleSlideout: function() {
-    document.getElementById('menu-slideout').classList.toggle("element-invisible");
+  toggleMenuContainer: function() {
+    document.getElementById('menu-container').classList.toggle("element-invisible");
     document.getElementById('show-menu-link').classList.toggle("element-invisible");
   },
   toggleMainMenu: function(idToHide) {
