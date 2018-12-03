@@ -13,11 +13,13 @@ let menu = {
   toggleMainMenu: function(idToHide) {
     document.getElementById('main-menu').classList.toggle("element-invisible");
     document.getElementById(idToHide).classList.toggle("element-invisible");
+    document.getElementById('main-menu-header').classList.toggle("element-invisible");
     document.getElementById('menu-header').classList.toggle("element-invisible");
   },
   togglePage: function(id) {
+    document.getElementById('main-menu-header').classList.toggle("element-invisible");
     document.getElementById('menu-header').classList.toggle("element-invisible");
-    document.getElementById('header').innerHTML = headers[id];
+    document.getElementById('page-header').innerHTML = headers[id];
     document.getElementById(id).classList.toggle("element-invisible");
     menu.toggleMainMenu();
   },

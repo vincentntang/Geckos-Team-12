@@ -1,31 +1,49 @@
 /*************** SLIDEOUT MENU STYLES ***************/
-#menu {
-  width: 15%;
-  height: 80%;
-}
-#show-menu-link {
-  float: right;
-}
 #menu-container {
   height: 80%;
-  width: 20%;
+  width: 25%;
   float: right;
-  overflow-x: hidden;
-  transition: all 0.5s ease-out;
-  padding-top: 10px;
+  padding: 20px;
+  margin: 0;
+  background-color: #dfe3e6;
 }
 #menu-container a, #show-menu-link a {
   text-decoration: none;
   color: inherit;
 }
-#change-background-page {
-  display: none;
+#show-menu-link {
+  float: right;
+}
+#menu-options {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+#menu-options li {
+  padding-top: 10px;
+}
+.header-container {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.header-container li {
+  display: inline-block;
+  padding: 5px 5px;
+}
+.back-arrow {
+  float: left;
+}
+.close-button {
+  float: right;
 }
 .change-background-tile {
   border: none;
   width: 50px;
   height: 50px;
   border-radius: 5px;
+  padding: 5px 5px;
 }
 .change-background-tile:focus {
   outline: none;

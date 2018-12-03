@@ -18,26 +18,27 @@
   <div class="element-invisible" id="menu-container">
     <!-- Main Menu -->
     <div id="main-menu">
-      <div class="menu-header">
-        <span>Main Menu</span>
-        <span><a href="#" onclick="menu.toggleMenuContainer()">&times</a></span>
+      <ul class="header-container" id="main-menu-header">
+        <li class="back-arrow"></li>
+        <li class="header">Menu</li>
+        <a href="#" onclick="menu.toggleMenuContainer()"><li class="close-button">&times</li></a>
         <hr />
-      </div> <!-- menu-header -->
-      <div id="menu-options">
-        <a href="#" onclick="menu.togglePage('change-background')">Change Background</a><br />
-        <a href="#">Filter Cards</a><br />
-        <a href="#">Copy Board</a><br />
-        <a href="#">Settings</a><br />
-      </div> <!-- menu-options -->
+      </ul> <!-- main-menu-header -->
+      <ul id="menu-options">
+        <li><a href="#" onclick="menu.togglePage('change-background')">Change Background</a></li>
+        <li><a href="#">Filter Cards</a></li>
+        <li><a href="#">Copy Board</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul> <!-- menu-options -->
     </div> <!-- main-menu -->
-    <!-- Reusable Menu Header -->
     <div id="menu-pages">
-      <div class="element-invisible" id="menu-header">
-        <span><a href="#" onclick="menu.toggleMainMenu('change-background')">&#8592;</a></span>
-        <span id="header">Header</span>
-        <span><a href="#" onclick="menu.toggleMenuContainer()">&times</a></span>
+      <!-- Reusable Menu Header -->
+      <ul class="element-invisible header-container" id="menu-header">
+        <a href="#" onclick="menu.toggleMainMenu('change-background')"><li class="back-arrow">&#8592;</li></a>
+        <li class="header" id="page-header"></li>
+        <a href="#" onclick="menu.toggleMenuContainer()"><li class="close-button">&times</li></a>
         <hr />
-      </div> <!-- menu-header -->
+      </ul> <!-- menu-header -->
       <!-- Change Background Page -->
       <div class="element-invisible" id="change-background">
         <input class="change-background-tile" style="background-color:rgb(0,121,191)" type="button" onclick="menu.changeBackground('rgb(0,121,191)')" />
