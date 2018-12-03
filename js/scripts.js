@@ -44,7 +44,7 @@ function displayInputField() {
   
   //Checks to see if a div#inputField exists and creates one if it does not exist and appends it to its parentNode
   if (!inputFieldExist) {
-    document.querySelector("div.cardContainer").appendChild(a);
+    document.querySelector(".cardContainer").appendChild(a);
   }
   // adds an event listener which will call the removeCard () function to delete the div#inputField when clicked
   closeButton.addEventListener("click", function() {

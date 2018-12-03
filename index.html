@@ -33,13 +33,13 @@
 
     <!-- Create text-area and 'Add a Card' and close 'X' buttons here -->
     <div id="inputField"></div>
+    <div class="card-link-container">
+      <!--AddCardLink - when clicked it adds an input field, and the buttons for adding a card and closing the input field. -->
+      <a id="addCardLink" href="#" onclick="displayInputField(); hideButton('addCardLink');"><i class="fas fa-plus"></i> Add a Card</a>
 
-    <!--AddCardLink - when clicked it adds an input field, and the buttons for adding a card and closing the input field. -->
-    <a id="addCardLink" href="#" onclick="displayInputField(); hideButton('addCardLink');"><i class="fas fa-plus"></i> Add a Card</a>
-
-    <!--AddAnotherCardLink - when clicked should perform the same as AddCardLink except that it is hidden at first and is shown only when the close button is clicked. -->
-    <a id="addAnotherCardLink" href="#" onclick="displayInputField(); hideButton('addAnotherCardLink');"><i class="fas fa-plus"></i> Add another Card</a>
-
+      <!--AddAnotherCardLink - when clicked should perform the same as AddCardLink except that it is hidden at first and is shown only when the close button is clicked. -->
+      <a id="addAnotherCardLink" href="#" onclick="displayInputField(); hideButton('addAnotherCardLink');"><i class="fas fa-plus"></i> Add another Card</a>
+    </div>
   </div>
   <!-- Link to JavaScript -->
   <script src="js/scripts.js"></script>
