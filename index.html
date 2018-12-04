@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie-edge">
+
   <title></title>
 
   <!-- Link to CSS -->
@@ -17,10 +17,45 @@
 
   <!--Link to google fonts - Roboto and Open sans (400, 400 italics, 700 bold, 700 italics)-->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto" rel="stylesheet">
-
 </head>
 
 <body>
+  <!-- *************** Menu *************** -->
+  <!-- Menu Link -->
+  <span id="show-menu-link"><a href="#" onclick="menu.toggleMenuContainer()">Show Menu</a></span>
+  <!-- Menu Slideout -->
+  <div class="element-invisible" id="menu-container">
+    <!-- Main Menu -->
+    <div id="main-menu">
+      <ul class="header-container" id="main-menu-header">
+        <li class="back-arrow"></li>
+        <li class="header">Menu</li>
+        <a href="#" onclick="menu.toggleMenuContainer()"><li class="close-button">&times</li></a>
+        <hr />
+      </ul> <!-- main-menu-header -->
+      <ul id="menu-options">
+        <li><a href="#" onclick="menu.togglePage('change-background')">Change Background</a></li>
+        <li><a href="#">Filter Cards</a></li>
+        <li><a href="#">Copy Board</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul> <!-- menu-options -->
+    </div> <!-- main-menu -->
+    <div id="menu-pages">
+      <!-- Reusable Menu Header -->
+      <ul class="element-invisible header-container" id="menu-header">
+        <a href="#" onclick="menu.toggleMainMenu('change-background')"><li class="back-arrow">&#8592;</li></a>
+        <li class="header" id="page-header"></li>
+        <a href="#" onclick="menu.toggleMenuContainer()"><li class="close-button">&times</li></a>
+        <hr />
+      </ul> <!-- menu-header -->
+      <!-- Change Background Page -->
+      <div class="element-invisible" id="change-background">
+        <input class="change-background-tile" style="background-color:rgb(0,121,191)" type="button" onclick="menu.changeBackground('rgb(0,121,191)')" />
+        <input class="change-background-tile" style="background-color:rgb(210,144,52)" type="button" onclick="menu.changeBackground('rgb(210,144,52)')" />
+        <input class="change-background-tile" style="background-color:rgb(81,152,57)" type="button" onclick="menu.changeBackground('rgb(81,152,57)')" />
+      </div> <!-- change-background-content -->
+    </div> <!-- menu-pages -->
+  </div> <!-- menu-slideout -->
 
   <!-- *************** ADD - DELETE - EDIT CARDS  ************** -->
 
@@ -44,5 +79,4 @@
   <!-- Link to JavaScript -->
   <script src="js/scripts.js"></script>
 </body>
-
 </html>
