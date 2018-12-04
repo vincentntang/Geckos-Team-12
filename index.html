@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie-edge">
-	<title></title>
 
-	<!-- Link to CSS -->
+  <title></title>
+
+  <!-- Link to CSS -->
   <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+  <!-- Link to Font-Awesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  <!--Link to google fonts - Roboto and Open sans (400, 400 italics, 700 bold, 700 italics)-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto" rel="stylesheet">
 </head>
+
 <body>
   <!-- *************** Menu *************** -->
   <!-- Menu Link -->
@@ -48,7 +57,26 @@
     </div> <!-- menu-pages -->
   </div> <!-- menu-slideout -->
 
-  <!-- Link to JavaScript-->
+  <!-- *************** ADD - DELETE - EDIT CARDS  ************** -->
+
+  <div class="cardContainer">
+    <!-- Temporary heading -->
+    <h4>General</h4>
+
+    <!-- Create card here -->
+    <div id="createCard"></div>
+
+    <!-- Create text-area and 'Add a Card' and close 'X' buttons here -->
+    <div id="inputField"></div>
+    <div class="card-link-container">
+      <!--AddCardLink - when clicked it adds an input field, and the buttons for adding a card and closing the input field. -->
+      <a id="addCardLink" href="#" onclick="displayInputField(); hideButton('addCardLink');"><i class="fas fa-plus"></i> Add a Card</a>
+
+      <!--AddAnotherCardLink - when clicked should perform the same as AddCardLink except that it is hidden at first and is shown only when the close button is clicked. -->
+      <a id="addAnotherCardLink" href="#" onclick="displayInputField(); hideButton('addAnotherCardLink');"><i class="fas fa-plus"></i> Add another Card</a>
+    </div>
+  </div>
+  <!-- Link to JavaScript -->
   <script src="js/scripts.js"></script>
 </body>
 </html>
