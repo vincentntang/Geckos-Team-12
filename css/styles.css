@@ -66,20 +66,59 @@ body {
 
 /*************** CREATE LIST ***************/
 
-/*** Card container ***/
-.cardContainer {
-  padding-top: 20px;
+.listContainer {
+  /* padding-top: 1px; */
   /* padding-bottom: 5px; */
-  width: 22%;
-  max-width: 24%;
+  /* width: 22%; */
+  width: 280px;
   /* height: 300px; */
-  background-color: rgb(237, 239, 240); /* This color is temporary and will be changed to neutral once it is placed inside a modal */
+  background-color: rgb(237, 239, 240);
   border-radius: 3px; /*** for rounded corners ***/
+  /* display: inline-block; */
+  /* box-sizing: border-box; */
+  vertical-align: top;
 }
 
-/* Temporary heading - to be changed to a dynamic heading once the modal is created */
-.cardContainer h4 {
+.listContent {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.listHeaderContainer {
+  display: flex;
+  /* height: 30px; */
+}
+.listHeaderContainer h2{
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.listHeader {
   padding-left: 10px;
+  width: 87%;
+}
+
+.ellipsisContainer {
+  width: 13%;
+  vertical-align: middle;
+}
+.ellipsisContainer a {
+  vertical-align: middle;
+  margin-left: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(12,57,83);
+}
+.fa-ellipsis-h {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+/*** Card container ***/
+.cardContainer {
+  max-width: 100%;
 }
 
 /*************** ADD - DELETE - EDIT CARDS ***************/
