@@ -1,3 +1,10 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(12,57,83);
+}
+
 /*************** SLIDEOUT MENU STYLES ***************/
 #menu-container {
   height: 80%;
@@ -57,11 +64,7 @@
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Open Sans', sans-serif;
-  color: rgb(12,57,83);
-}
+/*************** CREATE LIST ***************/
 
 /*** Card container ***/
 .cardContainer {
@@ -79,7 +82,7 @@ body {
   padding-left: 10px;
 }
 
-/*** CARD ***/
+/*************** ADD - DELETE - EDIT CARDS ***************/
 
 /*** Adding shadows for card effect ***/
 #newCard {
