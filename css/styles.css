@@ -66,8 +66,13 @@ body {
 
 /*************** CREATE LIST ***************/
 
-.listContainer {
-  /* padding-top: 1px; */
+.listWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.listTextAreaContainer, .listContainer {
+  /* padding-top: 6px; */
   /* padding-bottom: 5px; */
   /* width: 22%; */
   width: 280px;
@@ -77,6 +82,37 @@ body {
   /* display: inline-block; */
   /* box-sizing: border-box; */
   vertical-align: top;
+  display: flex;
+  flex-direction: column;
+}
+/* #listTextArea {
+  width: 50%;
+}
+
+#list-link-container {
+ width: 50%;
+} */
+
+.listContainer {
+  display: none;
+}
+
+#list-link-container a{
+  display: block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 3px; /*** for rounded corners ***/
+}
+
+a#addListLink, a#addAnotherListLink {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: rgba(1, 1, 1, 0.3);
+  padding-left: 10px;
+}
+
+a#addListLink:hover, a#addAnotherListLink:hover {
+  background-color: rgba(1, 1, 1, 0.4);
 }
 
 .listContent {
@@ -95,7 +131,7 @@ body {
   margin-bottom: 6px;
 }
 
-.listHeader {
+.listTitle {
   padding-left: 10px;
   width: 87%;
 }
@@ -103,6 +139,11 @@ body {
 .ellipsisContainer {
   width: 13%;
   vertical-align: middle;
+  border-radius: 3px; /*** for rounded corners ***/
+}
+
+.ellipsisContainer:hover {
+  background-color: rgba(214,218,220, 0.5);
 }
 .ellipsisContainer a {
   vertical-align: middle;
@@ -141,7 +182,8 @@ body {
   background-color: rgb(248, 249, 249);
 }
 
-textarea {
+/* textarea { */
+#textAreaTitle, #textAreaTitle2, #userInput {  
   outline: none; /* Removes the blue glow from around textarea */
   /* resize: none; Removes resize handle  */
   margin: auto;
@@ -157,6 +199,34 @@ textarea {
   border-radius: 3px;
   display: block;
   word-wrap: break-word;
+}
+
+#textAreaTitle, #textAreaTitle2 {  
+  outline: auto;
+  outline-color: rgb(2,106,167);
+  height: 20px;
+  max-height: 120px;
+  border: none;
+}
+#textAreaTitle {
+  margin-top: 6px;
+height: 16px;
+}
+
+#textAreaTitle2 {
+  outline: none; 
+  box-shadow: 0 2px 0px 0 rgb(237, 239, 240);
+  resize: none; /* Removes resize handle  */
+  color: rgb(12,57,83);
+  background-color: transparent;
+}
+
+#textAreaTitle2:focus {
+  outline: auto;
+  outline-color: rgb(2,106,167);
+  resize: auto;
+  color: rgb(12,57,83);
+  background-color: rgb(255, 255, 255);
 }
 
 .addCardBtn {
@@ -201,7 +271,7 @@ a#addAnotherCardLink {
   color: rgb(131, 140, 145);
 }
 
-a#addAnotherCardLink {
+a#addAnotherListLink, a#addAnotherCardLink {
   display: none;
 }
 

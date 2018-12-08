@@ -57,38 +57,49 @@
     </div> <!-- menu-pages -->
   </div> <!-- menu-slideout -->
 
-  <!-- *************** ADD - DELETE - EDIT CARDS  ************** -->
-
-  <!-- List Container -->
-  <div class="listContainer">
-    <div class="listContent">
-      <div class="listHeaderContainer">
-        <div class="listHeader">
-          <!--Temporary header-->
-          <h2>General</h2>
+  <!-- *************** WRAPPER  ************** -->
+  <div id="listWrapper">
+    <!-- *************** ADD LIST  ************** -->
+    <div class="listTextAreaContainer">
+      <div id="listTextArea"></div>
+      <div id="list-link-container">
+        <a id="addListLink" href="#" onclick="displayListInputField(); hideButton('addListLink');""><i class="fas fa-plus"></i> Add a list</a>
+        <a id="addAnotherListLink" href="#" onclick="displayListInputField()"><i class="fas fa-plus"></i> Add another list</a>
+      </div><!-- end of list-link-container -->
+    </div>
+    <!-- List Container -->
+    <div class="listContainer">
+      <div class="listContent">
+        <div class="listHeaderContainer">
+          <div id="listTitle">
+            <!--Temporary header-->
+            <!-- <h2>General</h2> -->
+          </div>
+          <div class="ellipsisContainer">
+            <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+          </div><!--The three dots are called ellipsis-->
         </div>
-        <div class="ellipsisContainer">
-          <a href="#"><i class="fas fa-ellipsis-h"></i></a>
-        </div><!--The three dots are called ellipsis-->
-      </div>
         
-      <div class="cardContainer">
-        <!-- Create card here -->
-        <div id="createCard"></div>
-        
-        <!-- Create text-area and 'Add a Card' and close 'X' buttons here -->
-        <div id="inputField"></div>
-      </div>
-      <div class="card-link-container">
-        <!--AddCardLink - when clicked it adds an input field, and the buttons for adding a card and closing the input field. -->
-        <a id="addCardLink" href="#" onclick="displayInputField(); hideButton('addCardLink');"><i class="fas fa-plus"></i> Add a Card</a>
-        
-        <!--AddAnotherCardLink - when clicked should perform the same as AddCardLink except that it is hidden at first and is shown only when the close button is clicked. -->
-        <a id="addAnotherCardLink" href="#" onclick="displayInputField(); hideButton('addAnotherCardLink');"><i class="fas fa-plus"></i> Add another Card</a>
-      </div><!-- end of card-link-container -->
-    </div><!-- end of list-content -->
-  </div><!-- end of List Container -->
+        <!-- *************** ADD - DELETE - EDIT CARDS  ************** -->
+    
+        <div class="cardContainer">
+          <!-- Create card here -->
+          <div id="createCard"></div>
+          
+          <!-- Create text-area and 'Add a Card' and close 'X' buttons here -->
+          <div id="inputField"></div>
+        </div>
+        <div class="card-link-container">
+          <!--AddCardLink - when clicked it adds an input field, and the buttons for adding a card and closing the input field. -->
+          <a id="addCardLink" href="#" onclick="displayInputField(); hideButton('addCardLink');"><i class="fas fa-plus"></i> Add a Card</a>
+          
+          <!--AddAnotherCardLink - when clicked should perform the same as AddCardLink except that it is hidden at first and is shown only when the close button is clicked. -->
+          <a id="addAnotherCardLink" href="#" onclick="displayInputField(); hideButton('addAnotherCardLink');"><i class="fas fa-plus"></i> Add another Card</a>
+        </div><!-- end of card-link-container -->
+      </div><!-- end of list-content -->
+    </div><!-- end of List Container -->
 
+  </div><!-- end of listWrapper -->
   <!-- Link to JavaScript -->
   <script src="js/scripts.js"></script>
 </body>
