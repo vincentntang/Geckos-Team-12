@@ -123,6 +123,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
 
 .listHeaderContainer {
   display: flex;
+  /* justify-content: flex-end; */
   /* height: 30px; */
 }
 .listHeaderContainer h2{
@@ -137,6 +138,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
 }
 
 .ellipsisContainer {
+  margin-left:80px;
   width: 13%;
   vertical-align: middle;
   border-radius: 3px; /*** for rounded corners ***/
@@ -210,7 +212,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
 }
 #textAreaTitle {
   margin-top: 6px;
-height: 16px;
+  height: 16px;
 }
 
 #textAreaTitle2 {
@@ -218,6 +220,7 @@ height: 16px;
   box-shadow: 0 2px 0px 0 rgb(237, 239, 240);
   resize: none; /* Removes resize handle  */
   color: rgb(12,57,83);
+  font-weight: bold;
   background-color: transparent;
 }
 
