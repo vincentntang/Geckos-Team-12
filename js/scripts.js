@@ -8,40 +8,51 @@ function displayInputField() {
   if (a === null) {
   a = document.createElement("inputField");
   a.id = "inputField";
-  // adds the newly created element to the DOM
   inputFieldExist = false;
 }
-  
+
+  // Creates form to wrap around textarea
+  let form = document.createElement("form");
+  form.id = "inputForm";
   // Creates a textarea for input
   var b = document.createElement("textarea");
   b.setAttribute("type", "text");
   b.setAttribute("id", "userInput");
   b.setAttribute("overflow", "break-word");
   b.setAttribute("placeholder", "Enter a title for this card...");
-  a.appendChild(b);
-  
-  // Creates a "Add a Card" button. It adds the textarea when clicked
-  var button = document.createElement("button");
+  // Creates submit button for form
+  let button = document.createElement("button");
   button.innerHTML = "Add Card";
   button.setAttribute("id", "createNewCard");
-  a.appendChild(button);
-  
-  //Call the CreateCard() function to create a new card when the 'Add a Card' button is clicked.
-  button.addEventListener("click", function() {
+  button.type = "submit";
+  // Adds textarea and button to form
+  form.appendChild(b);
+  form.appendChild(button);
+  // Adds form to inputField
+  a.appendChild(form);
+
+
+// ****************************************************
+// BUG: form doesn't submit when enter key is pressed -- why not?
+// *****************************************************
+
+
+  //Call the CreateCard() function to create a new card when the 'Add a Card' form is submitted (or button is clicked).
+  form.addEventListener("submit", function() {
     //Checks to see if the textarea is empty. If it is a card will not be created when the user clicks the 'Add a Card' button.
     if (document.getElementById("userInput").value ==="") {
       return false;
-    }else{
+    } else {
       createACard();
     }
-});
-  
+  });
+
   // Creates a delete "x" button and set attributes to it
   var closeButton = document.createElement("closeButton");
   closeButton.innerHTML = '<i class="fas fa-times"></i>';
   closeButton.setAttribute("id", "createNewCloseBtn");
   a.appendChild(closeButton);
-  
+
   //Checks to see if a div#inputField exists and creates one if it does not exist and appends it to its parentNode
   if (!inputFieldExist) {
     document.querySelector(".cardContainer").appendChild(a);
@@ -51,12 +62,12 @@ function displayInputField() {
     removeCard();
   });
 }
-  
+
 //Hides the 'Add a Card' and 'Add another card' links when they are clicked.
 function hideButton(x) {
 document.getElementById(x).style.display = "none"; // hide the button
 }
-  
+
 //Takes the input from div#inputField and creates a new 'titled' card
 function createACard() {
   var createCardElem = document.getElementById("createCard");
@@ -68,7 +79,7 @@ function createACard() {
   createNewCard.innerHTML = inputTaker;
   document.getElementById("userInput").value = ""; //empties the text-area after 'Add a Card' button is clicked.
 }
-  
+
 //removes the inputField and buttons from the document and shows the 'addAnotherCardLink' after it has been clicked.
 function removeCard(inputField) {
   var element = document.getElementById("inputField");

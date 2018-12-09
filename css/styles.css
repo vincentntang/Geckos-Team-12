@@ -71,7 +71,7 @@ textarea {
   margin-left: 10px;
 }
 
-button {
+button, #createNewCard {
   outline: none; /* Removes the blue glow from around textarea */
   font-size: 16px;
   font-weight: 600;
@@ -122,5 +122,3 @@ a#addAnotherCardLink:hover {
   background-color: rgba(131,140,145, 0.2);
   background-color: rgba(214,218,220, 0.5);
 }
-
-
