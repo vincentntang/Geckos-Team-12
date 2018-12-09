@@ -6,9 +6,6 @@ const headers = {
 };
 
 const backgroundImages = [
-  'assets/andrea-reiman-251037-unsplash.jpg',
-  'assets/andreas-brucker-630339-unsplash.jpg',
-  'assets/charl-van-rooy-672182-unsplash.jpg',
   'assets/eberhard-grossgasteiger-1036384-unsplash.jpg',
   'assets/ernest-porzi-19106-unsplash.jpg',
   'assets/frank-mckenna-140054-unsplash.jpg',
