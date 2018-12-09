@@ -38,13 +38,13 @@ function displayInputField() {
 
 
   //Call the CreateCard() function to create a new card when the 'Add a Card' form is submitted (or button is clicked).
-  form.addEventListener("submit", function() {
+  form.addEventListener("submit", function(e) {
     //Checks to see if the textarea is empty. If it is a card will not be created when the user clicks the 'Add a Card' button.
     if (document.getElementById("userInput").value ==="") {
       return false;
     } else {
       createACard();
-    }
+    } e.preventDefault();
   });
 
   // Creates a delete "x" button and set attributes to it
