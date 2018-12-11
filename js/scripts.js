@@ -52,7 +52,6 @@ function displayTitle() {
   document.getElementById("textAreaTitle").value = "";
   }
 
-/*** Creates an inputField which contains a textarea, a 'Add a List' button and a delete 'X' button.***/
 function displayListInputField() {
   //checks to see if there is a div#listTextArea in our DOM (null means we do not have div#inputField), and creates it if its not there
   var textAreaHolder = document.getElementById("listTextArea");
@@ -87,6 +86,8 @@ function displayListInputField() {
       hideButton('textAreaTitle');//hide Textarea
       hideButton('createNewList');//hide 'Add a List' button
       hideButton('createNewCloseBtn');//hide close 'x' button
+      // createNewListTextArea();
+      // duplicate();
     }
   });
   
@@ -125,6 +126,23 @@ function removeList(listTextArea) {
   // }
   element.parentNode.removeChild(element);
 }
+
+function createNewListTextArea() {
+  var listWrapper = document.getElementById("listWrapper");
+    var newListContainerDiv = document.createElement("div");
+    newListContainerDiv.setAttribute("id", "newListDiv");
+    listWrapper.appendChild(newListContainerDiv);
+}
+
+
+
+// function duplicate() {
+//   var i=0;
+//   var original = document.getElementById("listTextArea");
+//   var clone = original.cloneNode(true);
+//   clone.id = "listTextArea" + ++i;
+//   original.parentNode.appendChild(clone);
+// }
 
 // *************** ADD - DELETE - EDIT CARDS  **************
 
