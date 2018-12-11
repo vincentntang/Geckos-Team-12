@@ -5,17 +5,27 @@ const headers = {
   'settings-page': 'Settings'
 };
 
+const backgroundImages = [
+  'assets/eberhard-grossgasteiger-1036384-unsplash.jpg',
+  'assets/ernest-porzi-19106-unsplash.jpg',
+  'assets/frank-mckenna-140054-unsplash.jpg',
+  'assets/hugues-de-buyer-mimeure-335733-unsplash.jpg'
+];
+
 let menu = {
+  // Toggles menu from view (slide into or out of view)
   toggleMenuContainer: function() {
     document.getElementById('menu-container').classList.toggle("element-invisible");
     document.getElementById('show-menu-link').classList.toggle("element-invisible");
   },
+  // Shows or hides main menu
   toggleMainMenu: function(idToHide) {
     document.getElementById('main-menu').classList.toggle("element-invisible");
     document.getElementById(idToHide).classList.toggle("element-invisible");
     document.getElementById('main-menu-header').classList.toggle("element-invisible");
     document.getElementById('menu-header').classList.toggle("element-invisible");
   },
+  // Shows or hides a specific page (page id added when function called from HTML)
   togglePage: function(id) {
     document.getElementById('main-menu-header').classList.toggle("element-invisible");
     document.getElementById('menu-header').classList.toggle("element-invisible");
@@ -23,8 +33,15 @@ let menu = {
     document.getElementById(id).classList.toggle("element-invisible");
     menu.toggleMainMenu();
   },
+  // Changes background color
   changeBackground: function(color) {
     document.body.style.background = color;
+  },
+  // Changes background image
+  changeBackgroundImage: function(imageURL) {
+    document.body.style.backgroundImage = "url("+ imageURL +")";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundRepeat = "no-repeat";
   }
 };
 
@@ -138,8 +155,8 @@ function displayInputField() {
   a.id = "inputField";
   // adds the newly created element to the DOM
   inputFieldExist = false;
-  }
-  
+}
+
   // Creates a textarea for input
   var b = document.createElement("textarea");
   b.setAttribute("type", "text");
@@ -147,13 +164,13 @@ function displayInputField() {
   b.setAttribute("overflow", "break-word");
   b.setAttribute("placeholder", "Enter a title for this card...");
   a.appendChild(b);
-  
+
   // Creates a "Add a Card" button. It adds the textarea when clicked
   var button = document.createElement("button");
   button.innerHTML = "Add Card";
   button.setAttribute("id", "createNewCard");
   a.appendChild(button);
-  
+
   //Call the CreateCard() function to create a new card when the 'Add a Card' button is clicked.
   button.addEventListener("click", function() {
     //Checks to see if the textarea is empty. If it is a card will not be created when the user clicks the 'Add a Card' button.
@@ -162,14 +179,14 @@ function displayInputField() {
     }else{
       createACard();
     }
-  });
-  
+});
+
   // Creates a delete "x" button and set attributes to it
   var closeButton = document.createElement("closeButton");
   closeButton.innerHTML = '<i class="fas fa-times"></i>';
   closeButton.setAttribute("id", "createNewCloseBtn");
   a.appendChild(closeButton);
-  
+
   //Checks to see if a div#inputField exists and creates one if it does not exist and appends it to its parentNode
   if (!inputFieldExist) {
     document.querySelector(".cardContainer").appendChild(a);
@@ -184,7 +201,7 @@ function displayInputField() {
 function hideButton(x) {
   document.getElementById(x).style.display = "none"; // hide the button
 }
-  
+
 //Takes the input from div#inputField and creates a new 'titled' card
 function createACard() {
   var createCardElem = document.getElementById("createCard");
