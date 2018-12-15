@@ -1,4 +1,21 @@
+window.onload = function() {
+  checkForBackground();
+  setBackgroundMenuTile();
+};
 // *************** SLIDEOUT MENU SCRIPT ***************
+//Set background + background tile in menu to previous background setting
+function checkForBackground() {
+  if (localStorage.getItem('background') !== null) {
+    let background = localStorage.getItem('background');
+    menu.changeBackground(background);
+    document.getElementById('background-menu-tile').style.display.backgroundColor = background;
+  }
+}
+function setBackgroundMenuTile() {
+  let currentBackground = document.body.style.display.background;
+  console.log(currentBackground);
+}
+
 const headers = {
   'change-background': 'Change Background',
   'filter-cards-page': 'Filter Cards',
@@ -34,15 +51,18 @@ let menu = {
     menu.toggleMainMenu();
   },
   // Changes background color
-  changeBackground: function(color) {
-    document.body.style.background = color;
+  changeBackground: function(background) {
+    localStorage.setItem('background', background);
+    console.log("background in local storage as: " + localStorage.getItem('background', background));
+    if (background.startsWith('rgb')) {
+      document.body.style.background = background;
+    }
+    else {
+      document.body.style.background = "url("+ background +")";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundRepeat = "no-repeat";
+    }
   },
-  // Changes background image
-  changeBackgroundImage: function(imageURL) {
-    document.body.style.backgroundImage = "url("+ imageURL +")";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundRepeat = "no-repeat";
-  }
 };
 
 // *************** ADD LIST **************
@@ -78,7 +98,7 @@ function displayListInputField() {
     textAreaHolder.id = "listTextArea";
     listTextAreaExist = false;
   }
-  
+
   // Creates a textarea for adding lists
   var textAreaElement = document.createElement("textarea");
   textAreaElement.setAttribute("type", "text");
@@ -86,13 +106,13 @@ function displayListInputField() {
   textAreaElement.setAttribute("overflow", "break-word");
   textAreaElement.setAttribute("placeholder", "Enter list title...");
   textAreaHolder.appendChild(textAreaElement);
-  
+
   // Creates a "Add a List" button. It adds the textarea when clicked
   var button = document.createElement("button");
   button.innerHTML = "Add List";
   button.setAttribute("id", "createNewList");
   textAreaHolder.appendChild(button);
-  
+
   button.addEventListener("click", function() {
     var titleTaker = document.getElementById("textAreaTitle").value;
     if(titleTaker == ""){
@@ -107,13 +127,13 @@ function displayListInputField() {
       // duplicate();
     }
   });
-  
+
   // Creates a delete "x" button and set attributes to it
   var closeButton = document.createElement("closeButton");
   closeButton.innerHTML = '<i class="fas fa-times"></i>';
   closeButton.setAttribute("id", "createNewCloseBtn");
   textAreaHolder.appendChild(closeButton);
-  
+
   //Checks to see if a div#listTextArea exists and creates one if it does not exist and appends it to its parentNode
   if (!listTextAreaExist) {
     document.querySelector(".listTextAreaContainer").appendChild(textAreaHolder);
@@ -174,7 +194,7 @@ function displayInputField() {
   // adds the newly created element to the DOM
   inputFieldExist = false;
   }
-  
+
   // Creates a textarea for input
   var b = document.createElement("textarea");
   b.setAttribute("type", "text");
@@ -182,13 +202,13 @@ function displayInputField() {
   b.setAttribute("overflow", "break-word");
   b.setAttribute("placeholder", "Enter a title for this card...");
   a.appendChild(b);
-  
+
   // Creates a "Add a Card" button. It adds the textarea when clicked
   var button = document.createElement("button");
   button.innerHTML = "Add Card";
   button.setAttribute("id", "createNewCard");
   a.appendChild(button);
-  
+
   //Call the CreateCard() function to create a new card when the 'Add a Card' button is clicked.
   button.addEventListener("click", function() {
     //Checks to see if the textarea is empty. If it is a card will not be created when the user clicks the 'Add a Card' button.
@@ -198,13 +218,13 @@ function displayInputField() {
       createACard();
     }
   });
-  
+
   // Creates a delete "x" button and set attributes to it
   var closeButton = document.createElement("closeButton");
   closeButton.innerHTML = '<i class="fas fa-times"></i>';
   closeButton.setAttribute("id", "createNewCloseBtn");
   a.appendChild(closeButton);
-  
+
   //Checks to see if a div#inputField exists and creates one if it does not exist and appends it to its parentNode
   if (!inputFieldExist) {
     document.querySelector(".cardContainer").appendChild(a);
@@ -219,7 +239,7 @@ function displayInputField() {
 function hideButton(x) {
   document.getElementById(x).style.display = "none"; // hide the button
 }
-  
+
 //Takes the input from div#inputField and creates a new 'titled' card
 function createACard() {
   var createCardElem = document.getElementById("createCard");
