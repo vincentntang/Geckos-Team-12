@@ -1,6 +1,5 @@
 window.onload = function() {
   checkForBackground();
-  setBackgroundMenuTile();
 };
 // *************** SLIDEOUT MENU SCRIPT ***************
 //Set background + background tile in menu to previous background setting
@@ -8,12 +7,17 @@ function checkForBackground() {
   if (localStorage.getItem('background') !== null) {
     let background = localStorage.getItem('background');
     menu.changeBackground(background);
-    document.getElementById('background-menu-tile').style.display.backgroundColor = background;
+    changeBackgroundIcon(background);
   }
 }
-function setBackgroundMenuTile() {
-  let currentBackground = document.body.style.display.background;
-  console.log(currentBackground);
+function changeBackgroundIcon(background) {
+  let backgroundIcon = document.getElementById('background-menu-icon');
+  if (background.startsWith('rgb')) {
+    backgroundIcon.style.background = background;
+  }
+  else {
+    backgroundIcon.style.background = "url("+ background +")";
+  }
 }
 
 const headers = {
@@ -53,7 +57,6 @@ let menu = {
   // Changes background color
   changeBackground: function(background) {
     localStorage.setItem('background', background);
-    console.log("background in local storage as: " + localStorage.getItem('background', background));
     if (background.startsWith('rgb')) {
       document.body.style.background = background;
     }
@@ -62,6 +65,7 @@ let menu = {
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundRepeat = "no-repeat";
     }
+    changeBackgroundIcon(background);
   },
 };
 
