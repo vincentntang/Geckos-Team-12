@@ -7,23 +7,17 @@ function checkForBackground() {
   if (localStorage.getItem('background') !== null) {
     let background = localStorage.getItem('background');
     menu.changeBackground(background);
-    changeBackgroundIcon(background);
-  }
-}
-function changeBackgroundIcon(background) {
-  let backgroundIcon = document.getElementById('background-menu-icon');
-  if (background.startsWith('rgb')) {
-    backgroundIcon.style.background = background;
-  }
-  else {
-    backgroundIcon.style.background = "url("+ background +")";
+    menu.changeBackgroundIcon(background);
   }
 }
 
 const headers = {
   'change-background': 'Change Background',
-  'filter-cards-page': 'Filter Cards',
-  'settings-page': 'Settings'
+  'colors': 'Colors',
+  'photos': 'Photos',
+  'filter-cards': 'Filter Cards',
+  'copy-board': 'Copy Board',
+  'settings': 'Settings'
 };
 
 const backgroundImages = [
@@ -34,27 +28,40 @@ const backgroundImages = [
 ];
 
 let menu = {
-  // Toggles menu from view (slide into or out of view)
+  // Toggle menu from view (slide into or out of view)
   toggleMenuContainer: function() {
     document.getElementById('menu-container').classList.toggle("element-invisible");
     document.getElementById('show-menu-link').classList.toggle("element-invisible");
   },
-  // Shows or hides main menu
-  toggleMainMenu: function(idToHide) {
+  // Show or hide main menu
+  toggleMainMenu: function() {
+    //hide or show main menu
     document.getElementById('main-menu').classList.toggle("element-invisible");
-    document.getElementById(idToHide).classList.toggle("element-invisible");
     document.getElementById('main-menu-header').classList.toggle("element-invisible");
-    document.getElementById('menu-header').classList.toggle("element-invisible");
   },
-  // Shows or hides a specific page (page id added when function called from HTML)
+  //hide all pages (before showing selected page)
+  hideAllPages: function() {
+    for (let key in headers) {
+      if (document.getElementById(key).classList.contains('element-invisible') !== true) {
+      document.getElementById(key).classList.toggle('element-invisible');
+      }
+    }
+  },
+  // Show or hide a specific page (page id passed as argument when function called from HTML)
   togglePage: function(id) {
-    document.getElementById('main-menu-header').classList.toggle("element-invisible");
-    document.getElementById('menu-header').classList.toggle("element-invisible");
-    document.getElementById('page-header').innerHTML = headers[id];
-    document.getElementById(id).classList.toggle("element-invisible");
+    // if (document.getElementById(headers.colors).classList.contains('element-invisible') === true || document.getElementById(headers.photos).classList.contains('element-invisible') === true) {
+    // }
+    //hide main menu and all pages
     menu.toggleMainMenu();
+    menu.hideAllPages();
+    //hide or show header for current page
+    document.getElementById('menu-header').classList.toggle("element-invisible");
+    //set header text to match current page
+    document.getElementById('page-header').innerHTML = headers[id];
+    //show selected page
+    document.getElementById(id).classList.toggle("element-invisible");
   },
-  // Changes background color
+  // Change background color
   changeBackground: function(background) {
     localStorage.setItem('background', background);
     if (background.startsWith('rgb')) {
@@ -65,8 +72,17 @@ let menu = {
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundRepeat = "no-repeat";
     }
-    changeBackgroundIcon(background);
+    menu.changeBackgroundIcon(background);
   },
+  changeBackgroundIcon: function(background) {
+    let backgroundIcon = document.getElementById('background-menu-icon');
+    if (background.startsWith('rgb')) {
+      backgroundIcon.style.background = background;
+    }
+    else {
+      backgroundIcon.style.background = "url("+ background +")";
+    }
+  }
 };
 
 // *************** ADD LIST **************

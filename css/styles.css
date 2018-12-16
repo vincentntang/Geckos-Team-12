@@ -48,7 +48,6 @@ body {
 .back-arrow, .close-button {
   font-size: 1.5em;
   color: grey;
-
 }
 .menu-option span {
   vertical-align: middle;
@@ -72,8 +71,6 @@ body {
   width: 25px;
   height: 25px;
   border-radius: 5px;
-  object-fit: contain;
-  /* background-repeat: no-repeat; */
 }
 .element-invisible {
   position: absolute !important;
