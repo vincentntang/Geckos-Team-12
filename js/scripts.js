@@ -241,6 +241,8 @@ function removeCard(inputField) {
 
 // Based on development branch commit #28, Vincent 
 // *************** DRAGGABLE CARD EFFECT **************
-function dragCard(inputField) {
-  console.log("hello world");
+let draggable = {
+  drag: function(){
+    console.log("hello world");
+  }
 }

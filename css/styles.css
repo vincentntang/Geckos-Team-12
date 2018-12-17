@@ -315,3 +315,12 @@ a#addAnotherCardLink:hover {
   background-color: rgba(131,140,145, 0.2);
   background-color: rgba(214,218,220, 0.5);
 }
+
+/***********DRAGGABLE BACKGROUND ****************/
+.drag-here {
+  background-color: lightgray;
+  float: right;
+  width: 300px;
+  height: 300px;
+  margin: 30px;
+}
