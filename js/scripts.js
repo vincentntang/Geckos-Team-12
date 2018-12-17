@@ -243,15 +243,24 @@ function removeCard(inputField) {
 // *************** DRAGGABLE CARD EFFECT **************
 
 // TODO
-// 1. Add Event Listener over each button
+// 1. Add Event Listener over each button, automatically
 // 2. Make the div follow exactly the cursor, setting it to position absolute
 // 3. Add a class to the div, tilting the effect
 // 4. Recognize when a new drag-here artboard is arrived in location
 // 5. Append that element to that drag-here artboard
 // 6. Delete the original element
 
+// Resources
+// https://stackoverflow.com/questions/34896106/attach-event-to-dynamic-elements-in-javascript
+
+document.body.addEventListener( 'click', function ( event ) {
+  if( event.srcElement.className == 'drag-card' ) {
+    draggable.drag();
+  };
+} );
+
 let draggable = {
   drag: function(){
-    console.log("hello world");
+    console.log("Click some draggable function");
   }
 }
