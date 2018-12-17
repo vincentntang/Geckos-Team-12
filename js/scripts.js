@@ -238,3 +238,9 @@ function removeCard(inputField) {
   element.parentNode.removeChild(element);
   document.getElementById("addAnotherCardLink").style.display = "block";
 }
+
+// Based on development branch commit #28, Vincent 
+// *************** DRAGGABLE CARD EFFECT **************
+function dragCard(inputField) {
+  console.log("hello world");
+}
