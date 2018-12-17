@@ -75,31 +75,39 @@ nav {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/*** Card container ***/
-.cardContainer {
-  padding-top: 20px;
-
 /*************** CREATE LIST ***************/
 
-.listWrapper {
+#listWrapper {
   display: flex;
   flex-direction: row;
 }
 
-.listTextAreaContainer, .listContainer {
+.listTextAreaContainer, .listContainer, #newListDiv{
   /* padding-top: 6px; */
   /* padding-bottom: 5px; */
-  /* width: 22%; */
   width: 280px;
-  /* height: 300px; */
   background-color: rgb(237, 239, 240);
   border-radius: 3px; /*** for rounded corners ***/
-  /* display: inline-block; */
-  /* box-sizing: border-box; */
   vertical-align: top;
   display: flex;
   flex-direction: column;
 }
+
+/* #listTextAreaContainer1 {
+  margin-left: 10px;
+  background-color: red;
+  display: block;
+  z-index: 2;
+} */
+
+
+#newListDiv {
+  margin-left: 10px;
+  background-color: red;
+  width: 200px;
+  /* height: 200px; */
+} 
+
 /* #listTextArea {
   width: 50%;
 }
@@ -138,31 +146,32 @@ a#addListLink:hover, a#addAnotherListLink:hover {
 
 .listHeaderContainer {
   display: flex;
+  flex-direction: row;
   /* justify-content: flex-end; */
   /* height: 30px; */
 }
-.listHeaderContainer h2{
+/* .listHeaderContainer h2{
   font-size: 16px;
   margin-top: 10px;
   margin-bottom: 6px;
-}
+} */
 
-.listTitle {
-  padding-left: 10px;
+#listTitle {
+  /* padding-left: 10px; */
   width: 87%;
 }
 
-.ellipsisContainer {
-  margin-left:80px;
+#ellipsisContainer {
+  /* margin-left:80px; */
   width: 13%;
   vertical-align: middle;
   border-radius: 3px; /*** for rounded corners ***/
 }
 
-.ellipsisContainer:hover {
+#ellipsisContainer:hover {
   background-color: rgba(214,218,220, 0.5);
 }
-.ellipsisContainer a {
+#ellipsisContainer a {
   vertical-align: middle;
   margin-left: 12px;
   text-align: center;
@@ -216,6 +225,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
   border-radius: 3px;
   display: block;
   word-wrap: break-word;
+  /* overflow: hidden; */
 }
 
 #textAreaTitle, #textAreaTitle2 {  
@@ -224,6 +234,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
   height: 20px;
   max-height: 120px;
   border: none;
+  margin-top: 4px;
 }
 #textAreaTitle {
   margin-top: 6px;
@@ -237,6 +248,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
   color: rgb(12,57,83);
   font-weight: bold;
   background-color: transparent;
+  word-wrap: break-word;
 }
 
 #textAreaTitle2:focus {
