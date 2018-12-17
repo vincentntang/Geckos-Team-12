@@ -241,6 +241,15 @@ function removeCard(inputField) {
 
 // Based on development branch commit #28, Vincent 
 // *************** DRAGGABLE CARD EFFECT **************
+
+// TODO
+// 1. Add Event Listener over each button
+// 2. Make the div follow exactly the cursor, setting it to position absolute
+// 3. Add a class to the div, tilting the effect
+// 4. Recognize when a new drag-here artboard is arrived in location
+// 5. Append that element to that drag-here artboard
+// 6. Delete the original element
+
 let draggable = {
   drag: function(){
     console.log("hello world");
