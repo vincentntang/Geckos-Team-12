@@ -3,10 +3,14 @@ body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Open Sans', sans-serif;
   color: rgb(12,57,83);
+  background: rgb(0, 121, 191);
 }
 
 /*************** NAV BAR ***************/
-
+nav {
+  display: flex;
+  justify-content: space-between;
+}
 
 
 /*************** SLIDEOUT MENU STYLES ***************/
