@@ -317,7 +317,7 @@ a#addAnotherCardLink:hover {
 }
 
 /***********DRAGGABLE BACKGROUND ****************/
-.drag-here {
+.drag-box {
   background-color: lightgray;
   float: right;
   width: 300px;
@@ -327,4 +327,7 @@ a#addAnotherCardLink:hover {
 .drag-card {
   background-color: white;
   margin: 10px;
+}
+.drop-active {
+  border: 1px dashed red;
 }

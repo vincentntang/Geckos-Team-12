@@ -253,8 +253,8 @@ function removeCard(inputField) {
 // Resources
 // https://www.youtube.com/watch?v=RZjKNbAC87Q
 
-var dropTarget = document.querySelector(".wrapper");
-var draggables = document.querySelectorAll(".task");
+var dropTarget = document.querySelector(".drop-target");
+var draggables = document.querySelectorAll(".drag-card");
 
 // Tells the other side what data is being passed (e.g. the ID is targeted)
 draggables.forEach(item => {
@@ -271,9 +271,9 @@ dropTarget.addEventListener('dragover', function(ev) {
 dropTarget.addEventListener('drop', function(ev) {
   ev.preventDefault();
   let target = ev.target;
-  let droppable  = target.classList.contains('box');
+  let droppable  = target.classList.contains('drag-box');
   let srcId = ev.dataTransfer.getData("srcId");
-  
+
   if (droppable) {
     ev.target.appendChild(document.getElementById(srcId));
   }
