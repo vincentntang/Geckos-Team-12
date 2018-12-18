@@ -252,15 +252,16 @@ function removeCard(inputField) {
 
 // Resources
 // https://stackoverflow.com/questions/34896106/attach-event-to-dynamic-elements-in-javascript
+// https://javascript.info/mouse-drag-and-drop
 
 document.body.addEventListener( 'click', function ( event ) {
   if( event.srcElement.className == 'drag-card' ) {
-    draggable.drag();
+    drag.log();
   };
 } );
 
-let draggable = {
-  drag: function(){
+let drag = {
+  log: function(){
     console.log("Click some draggable function");
   }
 }
