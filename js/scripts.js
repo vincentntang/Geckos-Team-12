@@ -251,19 +251,33 @@ function removeCard(inputField) {
 // 6. Delete the original element
 
 // Resources
-// https://stackoverflow.com/questions/34896106/attach-event-to-dynamic-elements-in-javascript
-// https://javascript.info/mouse-drag-and-drop
-// https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
 // https://www.youtube.com/watch?v=RZjKNbAC87Q
 
-// document.body.addEventListener( 'click', function ( event ) {
-//   if( event.srcElement.className == 'drag-card' ) {
-//     drag.log();
-//   };
-// } );
+var dropTarget = document.querySelector(".wrapper");
+var draggables = document.querySelectorAll(".task");
 
-// let drag = {
-//   log: function(){
-//     console.log("Click some draggable function");
-//   }
-// }
+// Tells the other side what data is being passed (e.g. the ID is targeted)
+draggables.forEach(item => {
+  item.addEventListener("dragstart", function(ev){
+    ev.dataTransfer.setData("srcId", ev.target.id);
+  });
+})
+// The end destination, prevent browsers default drag and drop (disabling breaks feature)
+// because it's disabled by browsers by default
+dropTarget.addEventListener('dragover', function(ev) {
+  ev.preventDefault();
+});
+// End destination where item is dropped into
+dropTarget.addEventListener('drop', function(ev) {
+  ev.preventDefault();
+  let target = ev.target;
+  let droppable  = target.classList.contains('box');
+  let srcId = ev.dataTransfer.getData("srcId");
+  
+  if (droppable) {
+    ev.target.appendChild(document.getElementById(srcId));
+  }
+});
+
+
+/************** END OF DRAGGABLE CARD EFFECT ************************/
