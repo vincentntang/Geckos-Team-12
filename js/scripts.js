@@ -266,7 +266,6 @@ draggables.forEach(item => {
 // because it's disabled by browsers by default
 dropTarget.addEventListener('dragover', function(ev) {
   ev.preventDefault();
-  console.log(ev);
 });
 // End destination where item is dropped into
 dropTarget.addEventListener('drop', function(ev) {
@@ -279,7 +278,18 @@ dropTarget.addEventListener('drop', function(ev) {
     ev.target.appendChild(document.getElementById(srcId));
   }
 });
-draggables.forEach(item => {
-})
+// https://stackoverflow.com/questions/1115310/how-to-add-a-class-to-dom-element-in-javascript
+// var makeHoverElement= true;
+// dropTarget.addEventListener("dragover", function(ev){
+//   if(makeHoverElement){
+//     let newNode =document.createElement('div');
+//     newNode.className ='drop-active'
+//     ev.target.parentElement.prepend(newNode);
+//     makeHoverElement = false;
+//   }
+// });
+
+// dropTarget.addEventListener("dragleave", function(ev){
+// });
 
 /************** END OF DRAGGABLE CARD EFFECT ************************/

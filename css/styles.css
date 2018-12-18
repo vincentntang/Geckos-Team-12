@@ -332,4 +332,6 @@ a#addAnotherCardLink:hover {
 }
 .drop-active {
   border: 1px dashed red;
+  height: 15px;
+  margin: 15px;
 }
