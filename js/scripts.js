@@ -1,8 +1,23 @@
+window.onload = function() {
+  checkForBackground();
+};
 // *************** SLIDEOUT MENU SCRIPT ***************
+//Set background + background tile in menu to previous background setting
+function checkForBackground() {
+  if (localStorage.getItem('background') !== null) {
+    let background = localStorage.getItem('background');
+    menu.changeBackground(background);
+    menu.changeBackgroundIcon(background);
+  }
+}
+
 const headers = {
   'change-background': 'Change Background',
-  'filter-cards-page': 'Filter Cards',
-  'settings-page': 'Settings'
+  'colors': 'Colors',
+  'photos': 'Photos',
+  'filter-cards': 'Filter Cards',
+  'copy-board': 'Copy Board',
+  'settings': 'Settings'
 };
 
 const backgroundImages = [
@@ -13,35 +28,60 @@ const backgroundImages = [
 ];
 
 let menu = {
-  // Toggles menu from view (slide into or out of view)
+  // Toggle menu from view (slide into or out of view)
   toggleMenuContainer: function() {
     document.getElementById('menu-container').classList.toggle("element-invisible");
     document.getElementById('show-menu-link').classList.toggle("element-invisible");
   },
-  // Shows or hides main menu
-  toggleMainMenu: function(idToHide) {
+  // Show or hide main menu
+  toggleMainMenu: function() {
+    //hide or show main menu
     document.getElementById('main-menu').classList.toggle("element-invisible");
-    document.getElementById(idToHide).classList.toggle("element-invisible");
     document.getElementById('main-menu-header').classList.toggle("element-invisible");
-    document.getElementById('menu-header').classList.toggle("element-invisible");
   },
-  // Shows or hides a specific page (page id added when function called from HTML)
+  //hide all pages (before showing selected page)
+  hideAllPages: function() {
+    for (let key in headers) {
+      if (document.getElementById(key).classList.contains('element-invisible') !== true) {
+      document.getElementById(key).classList.toggle('element-invisible');
+      }
+    }
+  },
+  // Show or hide a specific page (page id passed as argument when function called from HTML)
   togglePage: function(id) {
-    document.getElementById('main-menu-header').classList.toggle("element-invisible");
-    document.getElementById('menu-header').classList.toggle("element-invisible");
-    document.getElementById('page-header').innerHTML = headers[id];
-    document.getElementById(id).classList.toggle("element-invisible");
+    // if (document.getElementById(headers.colors).classList.contains('element-invisible') === true || document.getElementById(headers.photos).classList.contains('element-invisible') === true) {
+    // }
+    //hide main menu and all pages
     menu.toggleMainMenu();
+    menu.hideAllPages();
+    //hide or show header for current page
+    document.getElementById('menu-header').classList.toggle("element-invisible");
+    //set header text to match current page
+    document.getElementById('page-header').innerHTML = headers[id];
+    //show selected page
+    document.getElementById(id).classList.toggle("element-invisible");
   },
-  // Changes background color
-  changeBackground: function(color) {
-    document.body.style.background = color;
+  // Change background color
+  changeBackground: function(background) {
+    localStorage.setItem('background', background);
+    if (background.startsWith('rgb')) {
+      document.body.style.background = background;
+    }
+    else {
+      document.body.style.background = "url("+ background +")";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundRepeat = "no-repeat";
+    }
+    menu.changeBackgroundIcon(background);
   },
-  // Changes background image
-  changeBackgroundImage: function(imageURL) {
-    document.body.style.backgroundImage = "url("+ imageURL +")";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundRepeat = "no-repeat";
+  changeBackgroundIcon: function(background) {
+    let backgroundIcon = document.getElementById('background-menu-icon');
+    if (background.startsWith('rgb')) {
+      backgroundIcon.style.background = background;
+    }
+    else {
+      backgroundIcon.style.background = "url("+ background +")";
+    }
   }
 };
 
@@ -78,7 +118,7 @@ function displayListInputField() {
     textAreaHolder.id = "listTextArea";
     listTextAreaExist = false;
   }
-  
+
   // Creates a textarea for adding lists
   var textAreaElement = document.createElement("textarea");
   textAreaElement.setAttribute("type", "text");
@@ -86,13 +126,13 @@ function displayListInputField() {
   textAreaElement.setAttribute("overflow", "break-word");
   textAreaElement.setAttribute("placeholder", "Enter list title...");
   textAreaHolder.appendChild(textAreaElement);
-  
+
   // Creates a "Add a List" button. It adds the textarea when clicked
   var button = document.createElement("button");
   button.innerHTML = "Add List";
   button.setAttribute("id", "createNewList");
   textAreaHolder.appendChild(button);
-  
+
   button.addEventListener("click", function() {
     var titleTaker = document.getElementById("textAreaTitle").value;
     if(titleTaker == ""){
@@ -107,13 +147,13 @@ function displayListInputField() {
       // duplicate();
     }
   });
-  
+
   // Creates a delete "x" button and set attributes to it
   var closeButton = document.createElement("closeButton");
   closeButton.innerHTML = '<i class="fas fa-times"></i>';
   closeButton.setAttribute("id", "createNewCloseBtn");
   textAreaHolder.appendChild(closeButton);
-  
+
   //Checks to see if a div#listTextArea exists and creates one if it does not exist and appends it to its parentNode
   if (!listTextAreaExist) {
     document.querySelector(".listTextAreaContainer").appendChild(textAreaHolder);
@@ -174,7 +214,7 @@ function displayInputField() {
   // adds the newly created element to the DOM
   inputFieldExist = false;
   }
-  
+
   // Creates a textarea for input
   var b = document.createElement("textarea");
   b.setAttribute("type", "text");
@@ -182,13 +222,13 @@ function displayInputField() {
   b.setAttribute("overflow", "break-word");
   b.setAttribute("placeholder", "Enter a title for this card...");
   a.appendChild(b);
-  
+
   // Creates a "Add a Card" button. It adds the textarea when clicked
   var button = document.createElement("button");
   button.innerHTML = "Add Card";
   button.setAttribute("id", "createNewCard");
   a.appendChild(button);
-  
+
   //Call the CreateCard() function to create a new card when the 'Add a Card' button is clicked.
   button.addEventListener("click", function() {
     //Checks to see if the textarea is empty. If it is a card will not be created when the user clicks the 'Add a Card' button.
@@ -198,13 +238,13 @@ function displayInputField() {
       createACard();
     }
   });
-  
+
   // Creates a delete "x" button and set attributes to it
   var closeButton = document.createElement("closeButton");
   closeButton.innerHTML = '<i class="fas fa-times"></i>';
   closeButton.setAttribute("id", "createNewCloseBtn");
   a.appendChild(closeButton);
-  
+
   //Checks to see if a div#inputField exists and creates one if it does not exist and appends it to its parentNode
   if (!inputFieldExist) {
     document.querySelector(".cardContainer").appendChild(a);
@@ -219,7 +259,7 @@ function displayInputField() {
 function hideButton(x) {
   document.getElementById(x).style.display = "none"; // hide the button
 }
-  
+
 //Takes the input from div#inputField and creates a new 'titled' card
 function createACard() {
   var createCardElem = document.getElementById("createCard");
