@@ -266,6 +266,7 @@ draggables.forEach(item => {
 // because it's disabled by browsers by default
 dropTarget.addEventListener('dragover', function(ev) {
   ev.preventDefault();
+  console.log(ev);
 });
 // End destination where item is dropped into
 dropTarget.addEventListener('drop', function(ev) {
@@ -278,6 +279,7 @@ dropTarget.addEventListener('drop', function(ev) {
     ev.target.appendChild(document.getElementById(srcId));
   }
 });
-
+draggables.forEach(item => {
+})
 
 /************** END OF DRAGGABLE CARD EFFECT ************************/

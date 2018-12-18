@@ -321,12 +321,14 @@ a#addAnotherCardLink:hover {
   background-color: lightgray;
   float: right;
   width: 300px;
-  height: 300px;
+  min-height: 50px;
+  padding-bottom: 30px;
+  height: auto;
   margin: 30px;
 }
 .drag-task {
   background-color: white;
-  margin: 10px;
+  margin: 15px;
 }
 .drop-active {
   border: 1px dashed red;
