@@ -254,7 +254,7 @@ function removeCard(inputField) {
 // https://www.youtube.com/watch?v=RZjKNbAC87Q
 
 var dropTarget = document.querySelector(".drop-target");
-var draggables = document.querySelectorAll(".drag-card");
+var draggables = document.querySelectorAll(".drag-task");
 
 // Tells the other side what data is being passed (e.g. the ID is targeted)
 draggables.forEach(item => {

@@ -324,7 +324,7 @@ a#addAnotherCardLink:hover {
   height: 300px;
   margin: 30px;
 }
-.drag-card {
+.drag-task {
   background-color: white;
   margin: 10px;
 }
