@@ -80,251 +80,146 @@ body {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-/*************** CREATE LIST ***************/
+/*************** ADD LISTS ***************/
 
-#listWrapper {
+
+.board-wrapper {
+  /* position: relative;
+  flex-grow: 1; */
+}
+
+.work-board {
+  background-color: transparent;
+  /* height: 600px; */
+  /* border: 3px solid blue; */
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+}
+#list-container {
+  margin: 8px 5px 10px 0px;
+  padding: 2px;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
   display: flex;
   flex-direction: row;
 }
 
-.listTextAreaContainer, .listContainer, #newListDiv{
-  /* padding-top: 6px; */
-  /* padding-bottom: 5px; */
-  width: 280px;
+.list {
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: 250px;
   background-color: rgb(237, 239, 240);
-  border-radius: 3px; /*** for rounded corners ***/
-  vertical-align: top;
+  border: none;
+  margin: 2px 5px;;
+}
+.list-heading {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-/* #listTextAreaContainer1 {
-  margin-left: 10px;
-  background-color: red;
-  display: block;
-  z-index: 2;
-} */
-
-
-#newListDiv {
-  margin-left: 10px;
-  background-color: red;
-  width: 200px;
-  /* height: 200px; */
+.list .list-heading h3 {
+  margin: 2px 0 7px 0;
+  width: 86%;
+  border-radius: 4px;
+  /* border: solid 1px   rgb(91,164,207); */
+  outline-color: rgb(91,164,207);
+  /* border: none; */
+  /* box-shadow: 0 0 0 1px rgb(91,164,207); */
 }
 
-/* #listTextArea {
-  width: 50%;
+.ellipsis {
+  width: 40px;
+  text-align: center;
+  border-radius: 4px;
+  margin: -1px 0 3px 0;
+  padding-bottom: 10px;
 }
 
-#list-link-container {
- width: 50%;
-} */
-
-.listContainer {
-  display: none;
+.ellipsis:hover {
+  background-color: rgba(131, 140, 145, 0.2)
 }
 
-#list-link-container a{
-  display: block;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-radius: 3px; /*** for rounded corners ***/
-}
-
-a#addListLink, a#addAnotherListLink {
+a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  background-color: rgba(1, 1, 1, 0.3);
+  color: rgb(131, 140, 145);
+  font-size: 20px;
+}
+
+form#add-list-form { 
+  margin-top: 12px;
+}
+
+.form-inner-container {
+  background-color: rgb(237, 239, 240);
+  padding: 5px 5px 0px 5px;
+  border-radius: 4px;
+}
+
+input[type=text] {
+  height: 32px;
+  display: block;
+  border-radius: 4px;
+  border: solid 1px   rgb(91,164,207);
+  width: 280px;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 0 0 1px   rgb(91,164,207);
+  word-wrap: break-word;
+  overflow: hidden;
+  color: rgb(131, 140, 145);
   padding-left: 10px;
 }
 
-a#addListLink:hover, a#addAnotherListLink:hover {
-  background-color: rgba(1, 1, 1, 0.4);
-}
-
-.listContent {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-}
-
-.listHeaderContainer {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: flex-end; */
-  /* height: 30px; */
-}
-/* .listHeaderContainer h2{
-  font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 6px;
-} */
-
-#listTitle {
-  /* padding-left: 10px; */
-  width: 87%;
-}
-
-#ellipsisContainer {
-  /* margin-left:80px; */
-  width: 13%;
-  vertical-align: middle;
-  border-radius: 3px; /*** for rounded corners ***/
-}
-
-#ellipsisContainer:hover {
-  background-color: rgba(214,218,220, 0.5);
-}
-#ellipsisContainer a {
-  vertical-align: middle;
-  margin-left: 12px;
-  text-align: center;
-  text-decoration: none;
-  color: rgb(12,57,83);
-}
-.fa-ellipsis-h {
-  font-size: 12px;
-  margin-top: 15px;
-}
-
-/*** Card container ***/
-.cardContainer {
-  max-width: 100%;
-}
-
-/*************** ADD - DELETE - EDIT CARDS ***************/
-
-/*** Adding shadows for card effect ***/
-#newCard {
-  margin: 10px;
+input[type=submit] {
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  padding: 8px 13px;
+  background-color: rgb(90, 172, 68);
   box-shadow: 0 2px 4px 0 rgba(1, 1, 1, 0.2);
   border: none;
-  border-radius: 3px; /*** for rounded corners ***/
-  /* padding: 1px 20px; */
-  background-color: rgb(255, 255, 255);
-  min-height: 18px;
-  font-size: 14px;
-  word-wrap: break-word;
-  padding: 8px 10px;
+  border-radius: 3px;
+  margin: 10px 0;
+  
 }
 
-#newCard:hover {
-  background-color: rgb(248, 249, 249);
+input[type=button]{
+  margin-right: -5px;
+  border: none;
+  background-color: transparent;
 }
 
-/* textarea { */
-#textAreaTitle, #textAreaTitle2, #userInput {
-  outline: none; /* Removes the blue glow from around textarea */
-  /* resize: none; Removes resize handle  */
-  margin: auto;
-  /* width: 210px; */
-  width: 86%;
+.fa-times {
+  font-size: 20px;
+  color: rgb(131, 140, 145);
+}
+
+form.add-item-form textarea {
+  outline: none;
+  width: 92%;
   height: 50px;
-  /* min-height: 18px; */
   max-height: 120px;
   padding: 10px;
   font-size: 14px;
-  box-shadow: 0 2px 4px 0 rgba(1, 1, 1, 0.2);
+  box-shadow: 0px 1px 0px 0 rgba(1, 1, 1, 0.2);
   border: none;
   border-radius: 3px;
   display: block;
   word-wrap: break-word;
-  /* overflow: hidden; */
+  resize: none;
 }
 
-#textAreaTitle, #textAreaTitle2 {
-  outline: auto;
-  outline-color: rgb(2,106,167);
-  height: 20px;
-  max-height: 120px;
-  border: none;
-  margin-top: 4px;
-}
-#textAreaTitle {
-  margin-top: 6px;
-  height: 16px;
-}
-
-#textAreaTitle2 {
-  outline: none;
-  box-shadow: 0 2px 0px 0 rgb(237, 239, 240);
-  resize: none; /* Removes resize handle  */
-  color: rgb(12,57,83);
-  font-weight: bold;
-  background-color: transparent;
-  word-wrap: break-word;
-}
-
-#textAreaTitle2:focus {
-  outline: auto;
-  outline-color: rgb(2,106,167);
-  resize: auto;
-  color: rgb(12,57,83);
-  background-color: rgb(255, 255, 255);
-}
-
-.addCardBtn {
-  font-size: 16px;
-  font-weight: 600;
-  color: rgb(255, 255, 255);
-  padding: 8px 13px;
-  background-color: rgb(90, 172, 68);
-  box-shadow: 0 2px 4px 0 rgba(1, 1, 1, 0.2);
-  border: none;
-  border-radius: 3px; /*** for rounded corners ***/
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-button {
-  outline: none; /* Removes the blue glow from around textarea */
-  font-size: 16px;
-  font-weight: 600;
-  color: rgb(255, 255, 255);
-  padding: 8px 13px;
-  background-color: rgb(90, 172, 68);
-  box-shadow: 0 2px 4px 0 rgba(1, 1, 1, 0.2);
-  border: none;
-  border-radius: 3px; /*** for rounded corners ***/
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-}
-
-#createNewCloseBtn {
-  color: rgb(131, 140, 145);
-  font-size: 20px;
-  margin-left: 10px;
-}
-
-a#addCardLink,
-a#addAnotherCardLink {
-  padding-left: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
-  color: rgb(131, 140, 145);
-}
-
-a#addAnotherListLink, a#addAnotherCardLink {
-  display: none;
-}
-
-a#addCardLink:hover,
-a#addAnotherCardLink:hover {
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-}
-
-.card-link-container a {
-  display: block;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom-right-radius: 3px; /*** for rounded corners ***/
-  border-bottom-left-radius: 3px; /*** for rounded corners ***/
-}
-
-.card-link-container a:hover {
-  background-color: rgba(131,140,145, 0.2);
-  background-color: rgba(214,218,220, 0.5);
+p {
+  margin: 10px;
+    box-shadow: 0 2px 4px 0 rgba(1, 1, 1, 0.2);
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(255, 255, 255);
+    min-height: 18px;
+    font-size: 14px;
+    word-wrap: break-word;
+    padding: 8px 10px;
 }
