@@ -82,12 +82,6 @@ body {
 
 /*************** ADD LISTS ***************/
 
-
-.board-wrapper {
-  position: relative;
-  flex-grow: 1;
-}
-
 .work-board {
   background-color: transparent;
   border-radius: 5px;
