@@ -6,8 +6,8 @@ body {
 
 /*************** SLIDEOUT MENU STYLES ***************/
 #menu-container {
-  height: 80%;
-  width: 25%;
+  height: 600px;
+  width: 300px;
   float: right;
   padding: 20px;
   margin: 0;
@@ -20,12 +20,12 @@ body {
 #show-menu-link {
   float: right;
 }
-#menu-options {
+#menu-options-container {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
-#menu-options li {
+#menu-options-container li {
   padding-top: 10px;
 }
 .header-container {
@@ -44,15 +44,32 @@ body {
 .close-button {
   float: right;
 }
+.back-arrow, .close-button {
+  font-size: 1.5em;
+  color: grey;
+}
+.menu-option span {
+  vertical-align: middle;
+  margin-right: 12px;
+}
 .change-background-tile {
   border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  padding: 5px 5px;
+  width: 137.5px;
+  height: 100px;
+  border-radius: 7px;
+  /* padding: 5px 5px; */
+  margin: 5px 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .change-background-tile:focus {
   outline: none;
+}
+#background-menu-icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
 }
 .element-invisible {
   position: absolute !important;
@@ -94,7 +111,7 @@ body {
   background-color: red;
   width: 200px;
   /* height: 200px; */
-} 
+}
 
 /* #listTextArea {
   width: 50%;
@@ -197,7 +214,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
 }
 
 /* textarea { */
-#textAreaTitle, #textAreaTitle2, #userInput {  
+#textAreaTitle, #textAreaTitle2, #userInput {
   outline: none; /* Removes the blue glow from around textarea */
   /* resize: none; Removes resize handle  */
   margin: auto;
@@ -216,7 +233,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
   /* overflow: hidden; */
 }
 
-#textAreaTitle, #textAreaTitle2 {  
+#textAreaTitle, #textAreaTitle2 {
   outline: auto;
   outline-color: rgb(2,106,167);
   height: 20px;
@@ -230,7 +247,7 @@ a#addListLink:hover, a#addAnotherListLink:hover {
 }
 
 #textAreaTitle2 {
-  outline: none; 
+  outline: none;
   box-shadow: 0 2px 0px 0 rgb(237, 239, 240);
   resize: none; /* Removes resize handle  */
   color: rgb(12,57,83);
