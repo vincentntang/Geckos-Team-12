@@ -104,13 +104,14 @@ function addList(e) {
   list.innerHTML =
     `<div class="list-heading" >
       <h3 contenteditable="true">` + name + `</h3>
-    <div class= ellipsis><a href="#">...</a></div>
+    <div class= ellipsis><a href="#">&#8230;</a></div>
     </div>
       <form class="add-item-form">
         <textarea placeholder="Enter a title for this card..."></textarea>
         <div>
         <input type="submit" value="Add Card">
         <input type="button"><i class="fas fa-times"></i></input>
+        <div class= ellipsis><a href="#">&#8230;</a></div>
         </div>
       </form>`;
 
