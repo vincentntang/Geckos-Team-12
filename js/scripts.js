@@ -104,7 +104,7 @@ function addList(e) {
   list.innerHTML =
     `<div class="list-heading" >
       <h3 contenteditable="true">` + name + `</h3>
-    <div class= ellipsis><a href="#">&#8230;</a></div>
+    <div class= "ellipsis"><a href="#">&#8230;</a></div>
     </div>
       <div> 
         <form class="add-item-form">
@@ -112,7 +112,7 @@ function addList(e) {
           <div>
           <input type="submit" value="Add Card">
           <input type="button"><i class="fas fa-times"></i></input>
-          <div class= ellipsis><a href="#">&#8230;</a></div>
+          <div class= "ellipsis"><a href="#">&#8230;</a></div>
           </div>
         </form>
       </div>`;
@@ -130,11 +130,16 @@ document.addEventListener('submit', function(e) {
     if ('' == text) {
       return;
     }
+    //create card
     const cardItem = document.createElement('p');
     const card = document.createElement('div');
-    card.setAttribute('class', 'card')
+    card.setAttribute('class', 'card');
+    //create pen icon
+    const pen = document.createElement('a');
+    pen.innerHTML = '<i class="fas fa-pen"></i>';
     cardItem.innerHTML = text;
     card.appendChild(cardItem)
+    card.appendChild(pen);
     e.target.parentElement.prepend(card);
   }
 });
