@@ -102,20 +102,25 @@ body {
   padding: 4px 8px;
   border-radius: 4px;
   width: 256px;
-  background-color: rgb(237, 239, 240);
+  background-color: rgb(226,228,230);
   border: none;
-  margin: 2px 5px;;
+  margin: 2px 5px;
 }
 .list-heading {
   display: flex;
   flex-direction: row;
+  padding-bottom: 3px;
+  margin-bottom: -10px;
 }
 
 .list .list-heading h3 {
-  margin: 2px 3px 7px 0;
+  margin: 2px 3px 0px 0px;
   width: 82%;
   border-radius: 4px;
   outline:none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px;
 }
 
 .list .list-heading h3:focus{
@@ -128,7 +133,7 @@ body {
   width: 30px;
   text-align: center;
   border-radius: 4px;
-  margin: 0px -4px 3px 20px;
+  margin: 0px 1px 0px 0px;
   padding: 0px;
   float: right;
 }
@@ -147,6 +152,8 @@ a {
   color: rgb(131, 140, 145);
   font-size: 19px;
   vertical-align:middle;
+  line-height:3px; 
+  text-align:center;
 }
 
 form#add-list-form { 
@@ -155,7 +162,7 @@ form#add-list-form {
 }
 
 .form-inner-container {
-  background-color: rgb(237, 239, 240);
+  background-color: rgb(226,228,230);
   padding: 5px 5px 0px 5px;
   border-radius: 4px;
 }
