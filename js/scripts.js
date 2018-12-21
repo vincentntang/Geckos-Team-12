@@ -132,6 +132,7 @@ document.addEventListener('submit', function(e) {
     }
     const cardItem = document.createElement('p');
     const card = document.createElement('div');
+    card.setAttribute('class', 'card')
     cardItem.innerHTML = text;
     card.appendChild(cardItem)
     e.target.parentElement.prepend(card);
