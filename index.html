@@ -73,12 +73,17 @@
   <div class="board-wrapper">
     <div id="workBoard" class="work-board">
       <div id="list-container"></div>
+      <a href="#" id="show-list-form" onclick="toggleDiv('add-list-form', 'show-list-form');">
+      <span class="placeholder"><i class="fas fa-plus"></i> Add a list</span>
+      <span class="placeholder"><i class="fas fa-plus"></i> Add another list</span>
+      </a>
       <form id="add-list-form">
         <div class="form-inner-container">
         <input type="text" id="list-name" placeholder="Enter list title..." autocomplete="off">
         <input type="submit" value="Add List">
-        <input type="button"><i class="fas fa-times"></i></input>
-        </div>
+        <!-- <input type="button" onclick="toggleDiv('add-list-form', 'show-list-form');"><i class="fas fa-times"></i></input> -->
+        <input type="button" onclick="toggleDiv('add-list-form', 'show-list-form')" value="&#88;">
+      </div>
       </form>
     </div>
   </div><!-- end of board-wrapper -->

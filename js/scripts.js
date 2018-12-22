@@ -111,7 +111,7 @@ function addList(e) {
           <textarea placeholder="Enter a title for this card..."></textarea>
           <div>
           <input type="submit" value="Add Card">
-          <input type="button"><i class="fas fa-times"></i></input>
+          <input type="button" value="&#88;">
           <div class= "ellipsis"><a href="#">&#8230;</a></div>
           </div>
         </form>
@@ -143,3 +143,26 @@ document.addEventListener('submit', function(e) {
     e.target.parentElement.prepend(card);
   }
 });
+
+spans = document.getElementsByClassName("placeholder");
+//toggle between 'add a list' and 'add another list' links
+window.onload = function(){
+   spans[1].style.display='none';
+   document.forms[0].style.display='none';
+};
+
+let clicked = 0;
+//toggle between links and 'add-list-form'
+function toggleDiv(divId1, divId2){
+  clicked++;
+  if(document.getElementById( divId1 ).style.display == 'block'){
+    document.getElementById( divId1 ).style.display = 'none';
+    document.getElementById( divId2 ).style.display = 'block';
+  }else{	
+    document.getElementById( divId2 ).style.display = 'none';
+    document.getElementById( divId1 ).style.display = 'block'
+  }if(clicked > 0) {
+    spans[0].style.display='none';
+    spans[1].style.display='block';
+  }
+}

@@ -200,11 +200,13 @@ input[type=button]{
   margin-right: -5px;
   border: none;
   background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(131, 140, 145);
 }
 
-.fa-times {
-  font-size: 20px;
-  color: rgb(131, 140, 145);
+input[type=button]:hover{
+  color: rgb(103,109,112);
 }
 
 form.add-item-form {
@@ -266,4 +268,24 @@ form.add-item-form textarea {
 }
 .fa-pen:hover {
   background-color: rgb(226,228,230);
+}
+
+#add-list-form {
+  display: none;
+}
+
+a#show-list-form {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: rgba(1, 1, 1, 0.3);
+  padding: 11px 15px 11px 20px;
+  width: 242px;
+  text-align: left;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 17px;
+}
+
+a#show-list-form:hover {
+  background-color: rgba(1, 1, 1, 0.4);
 }
