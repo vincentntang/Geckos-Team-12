@@ -104,15 +104,15 @@ function addList(e) {
   list.innerHTML =
     `<div class="list-heading" >
       <h3 contenteditable="true">` + name + `</h3>
-    <div class= ellipsis><a href="#">&#8230;</a></div>
+    <div class= "ellipsis"><a href="#">&#8230;</a></div>
     </div>
       <div> 
         <form class="add-item-form">
           <textarea placeholder="Enter a title for this card..."></textarea>
           <div>
           <input type="submit" value="Add Card">
-          <input type="button"><i class="fas fa-times"></i></input>
-          <div class= ellipsis><a href="#">&#8230;</a></div>
+          <input type="button" value="&#88;">
+          <div class= "ellipsis"><a href="#">&#8230;</a></div>
           </div>
         </form>
       </div>`;
@@ -130,10 +130,39 @@ document.addEventListener('submit', function(e) {
     if ('' == text) {
       return;
     }
+    //create card
     const cardItem = document.createElement('p');
     const card = document.createElement('div');
+    card.setAttribute('class', 'card');
+    //create pen icon
+    const pen = document.createElement('a');
+    pen.innerHTML = '<i class="fas fa-pen"></i>';
     cardItem.innerHTML = text;
     card.appendChild(cardItem)
+    card.appendChild(pen);
     e.target.parentElement.prepend(card);
   }
 });
+
+spans = document.getElementsByClassName("placeholder");
+//toggle between 'add a list' and 'add another list' links
+window.onload = function(){
+   spans[1].style.display='none';
+   document.forms[0].style.display='none';
+};
+
+let clicked = 0;
+//toggle between links and 'add-list-form'
+function toggleDiv(divId1, divId2){
+  clicked++;
+  if(document.getElementById( divId1 ).style.display == 'block'){
+    document.getElementById( divId1 ).style.display = 'none';
+    document.getElementById( divId2 ).style.display = 'block';
+  }else{	
+    document.getElementById( divId2 ).style.display = 'none';
+    document.getElementById( divId1 ).style.display = 'block'
+  }if(clicked > 0) {
+    spans[0].style.display='none';
+    spans[1].style.display='block';
+  }
+}

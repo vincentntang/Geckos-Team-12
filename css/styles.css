@@ -102,20 +102,25 @@ body {
   padding: 4px 8px;
   border-radius: 4px;
   width: 256px;
-  background-color: rgb(237, 239, 240);
+  background-color: rgb(226,228,230);
   border: none;
-  margin: 2px 5px;;
+  margin: 2px 5px;
 }
 .list-heading {
   display: flex;
   flex-direction: row;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .list .list-heading h3 {
-  margin: 2px 3px 7px 0;
+  margin: 2px 3px 0px 0px;
   width: 82%;
   border-radius: 4px;
   outline:none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px;
 }
 
 .list .list-heading h3:focus{
@@ -128,7 +133,7 @@ body {
   width: 30px;
   text-align: center;
   border-radius: 4px;
-  margin: 0px -4px 3px 20px;
+  margin: 0px 1px 0px 0px;
   padding: 0px;
   float: right;
 }
@@ -147,6 +152,8 @@ a {
   color: rgb(131, 140, 145);
   font-size: 19px;
   vertical-align:middle;
+  /* line-height:3px;  */
+  text-align:center;
 }
 
 form#add-list-form { 
@@ -155,7 +162,7 @@ form#add-list-form {
 }
 
 .form-inner-container {
-  background-color: rgb(237, 239, 240);
+  background-color: rgb(226,228,230);
   padding: 5px 5px 0px 5px;
   border-radius: 4px;
 }
@@ -182,9 +189,9 @@ input[type=submit] {
   color: rgb(255, 255, 255);
   padding: 8px 13px;
   background-color: rgb(90, 172, 68);
-  box-shadow: 0 2px 4px 0 rgba(1, 1, 1, 0.2);
+  box-shadow: 0 1px 0 0 rgb(63, 111, 33);
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   margin: 10px 0;
   
 }
@@ -193,11 +200,17 @@ input[type=button]{
   margin-right: -5px;
   border: none;
   background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(131, 140, 145);
 }
 
-.fa-times {
-  font-size: 20px;
-  color: rgb(131, 140, 145);
+input[type=button]:hover{
+  color: rgb(103,109,112);
+}
+
+form.add-item-form {
+  margin-top: 20px;
 }
 
 form.add-item-form textarea {
@@ -213,16 +226,66 @@ form.add-item-form textarea {
   display: block;
   word-wrap: break-word;
   resize: none;
+  margin-top: -5px;
 }
 
-p {
-  margin: 10px;
-    box-shadow: 0 2px 4px 0 rgba(1, 1, 1, 0.2);
-    border: none;
-    border-radius: 3px;
-    background-color: rgb(255, 255, 255);
-    min-height: 18px;
-    font-size: 14px;
-    word-wrap: break-word;
-    padding: 8px 10px;
+.card {
+  width: 92%;
+  box-shadow: 0px 1px 0px 0 rgba(1, 1, 1, 0.2);
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  min-height: 18px;
+  word-wrap: break-word;
+  padding: 0px 10px;
+  margin-top: 9px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.card:hover {
+  background-color: rgba(248,249,249,0.7);
+}
+.card p{
+  position: relative;
+  padding: 0px;
+  margin: 6px 0;
+  font-size: 14px;
+  z-index: 1;
+}
+
+.card a{
+  position: absolute;
+  margin-left: 220px;
+  z-index: 2;
+}
+
+.fa-pen {
+  font-size: 10px;
+  margin: 0;
+  padding: 7px;
+  border-radius: 4px;
+}
+.fa-pen:hover {
+  background-color: rgb(226,228,230);
+}
+
+#add-list-form {
+  display: none;
+}
+
+a#show-list-form {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: rgba(1, 1, 1, 0.3);
+  padding: 11px 15px 11px 20px;
+  width: 242px;
+  text-align: left;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 17px;
+}
+
+a#show-list-form:hover {
+  background-color: rgba(1, 1, 1, 0.4);
 }
