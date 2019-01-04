@@ -1,6 +1,16 @@
-window.onload = function () {
+window.onload = function() {
   checkForBackground();
+  toggleAddListLinks();
 };
+
+function setEventListeners() {
+  document.getElementById('sample-card').addEventListener('click', (event) => { cardOptions.showOverlay(event); });
+  document.getElementById('sample-pen').addEventListener('click', (event) => {
+    event.stopPropagation();
+    cardOptions.showCardOptions(event); });
+}
+
+// setEventListeners();
 // *************** SLIDEOUT MENU SCRIPT ***************
 //Set background + background tile in menu to previous background setting
 function checkForBackground() {
@@ -29,28 +39,26 @@ const backgroundImages = [
 
 let menu = {
   // Toggle menu from view (slide into or out of view)
-  toggleMenuContainer: function () {
+  toggleMenuContainer: function() {
     document.getElementById('menu-container').classList.toggle("element-invisible");
     document.getElementById('show-menu-link').classList.toggle("element-invisible");
   },
   // Show or hide main menu
-  toggleMainMenu: function () {
+  toggleMainMenu: function() {
     //hide or show main menu
     document.getElementById('main-menu').classList.toggle("element-invisible");
     document.getElementById('main-menu-header').classList.toggle("element-invisible");
   },
   //hide all pages (before showing selected page)
-  hideAllPages: function () {
+  hideAllPages: function() {
     for (let key in headers) {
       if (document.getElementById(key).classList.contains('element-invisible') !== true) {
-        document.getElementById(key).classList.toggle('element-invisible');
+      document.getElementById(key).classList.toggle('element-invisible');
       }
     }
   },
   // Show or hide a specific page (page id passed as argument when function called from HTML)
-  togglePage: function (id) {
-    // if (document.getElementById(headers.colors).classList.contains('element-invisible') === true || document.getElementById(headers.photos).classList.contains('element-invisible') === true) {
-    // }
+  togglePage: function(id) {
     //hide main menu and all pages
     menu.toggleMainMenu();
     menu.hideAllPages();
@@ -62,25 +70,25 @@ let menu = {
     document.getElementById(id).classList.toggle("element-invisible");
   },
   // Change background color
-  changeBackground: function (background) {
+  changeBackground: function(background) {
     localStorage.setItem('background', background);
     if (background.startsWith('rgb')) {
       document.body.style.background = background;
     }
     else {
-      document.body.style.background = "url(" + background + ")";
+      document.body.style.background = "url("+ background +")";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundRepeat = "no-repeat";
     }
     menu.changeBackgroundIcon(background);
   },
-  changeBackgroundIcon: function (background) {
+  changeBackgroundIcon: function(background) {
     let backgroundIcon = document.getElementById('background-menu-icon');
     if (background.startsWith('rgb')) {
       backgroundIcon.style.background = background;
     }
     else {
-      backgroundIcon.style.background = "url(" + background + ")";
+      backgroundIcon.style.background = "url("+ background +")";
     }
   }
 };
@@ -129,13 +137,13 @@ function addList(e) {
     </div>
       </div>`;
 
-  //Increasing index
-  listIndex++
+   //Increasing index
+   listIndex++
   document.getElementById("list-wrapper").appendChild(list);
 }
 
 // add new item submit eventlistener
-document.addEventListener('submit', function (e) {
+document.addEventListener('submit', function(e) {
   if (e.target.matches('.add-item-form')) {
     e.preventDefault();
     const textarea = e.target.getElementsByTagName('textarea')[0];
@@ -151,34 +159,39 @@ document.addEventListener('submit', function (e) {
     //create pen icon
     const pen = document.createElement('a');
     pen.innerHTML = '<i class="fas fa-pen"></i>';
+    pen.addEventListener('click', function(event){
+      cardOptions.setCurrentCard(event);
+      cardOptions.showCardOptions(event);
+    });
     cardItem.innerHTML = text;
     card.appendChild(cardItem)
     card.appendChild(pen);
     e.target.parentElement.prepend(card);
+    //Increasing countCard
     countCard++;
   }
 });
 
 let spans = document.getElementsByClassName("placeholder");
 //toggle between 'add a list' and 'add another list' links
-window.onload = function () {
-  spans[1].style.display = 'none';
-  document.forms[0].style.display = 'none';
+function toggleAddListLinks() {
+   spans[1].style.display='none';
+   document.forms[0].style.display='none';
 };
 
 let clicked = 0;
 //toggle between links and 'add-list-form'
-function toggleDiv(formId, linkId) {
+function toggleDiv(formId, linkId){
   clicked++;
-  if (document.getElementById(formId).style.display == 'block') {
-    document.getElementById(formId).style.display = 'none';
-    document.getElementById(linkId).style.display = 'block';
-  } else {
-    document.getElementById(linkId).style.display = 'none';
-    document.getElementById(formId).style.display = 'block'
-  } if (clicked > 0) {
-    spans[0].style.display = 'none';
-    spans[1].style.display = 'block';
+  if(document.getElementById( formId ).style.display == 'block'){
+    document.getElementById( formId ).style.display = 'none';
+    document.getElementById( linkId ).style.display = 'block';
+  }else{	
+    document.getElementById( linkId ).style.display = 'none';
+    document.getElementById( formId ).style.display = 'block'
+  }if(clicked > 0) {
+    spans[0].style.display='none';
+    spans[1].style.display='block';
   }
 }
 
@@ -201,5 +214,94 @@ function hideSHowForm(curr, form, link, id) {
   } if (countCard > 0) {
     spans[0].style.display = 'none';
     spans[1].style.display = 'block';
+  }
+}
+
+//removes the inputField and buttons from the document and shows the 'addAnotherCardLink' after it has been clicked.
+function removeCard(inputField) {
+  var element = document.getElementById("inputField");
+  element.parentNode.removeChild(element);
+  document.getElementById("addAnotherCardLink").style.display = "block";
+}
+
+
+
+// *************** CARD OPTIONS (small + modal) ***************
+// declare array for label colors (cardOptions.changeLabel())
+let labelArr = [];
+let cardOptions = {
+  currentCard: null,
+  setCurrentCard: function(pen) {
+    this.currentCard = this.getDiv(pen.target, 'card');
+  },
+  getDiv: function (elem, divClass) {
+    for ( ; elem && elem !== document; elem = elem.parentNode ) {
+      if (elem.classList.contains(divClass)) {
+        return elem;
+     }
+    }
+    return null;
+  },
+  showOverlay: function() {
+    document.getElementById('overlay-container').classList.toggle('element-invisible');
+    document.body.classList.add('ovleray-opacity');
+  },
+  showCardOptions: function(event) {
+    let target = event.target;
+    // Get parent elements with 'list' and 'card' class names
+    let list = cardOptions.getDiv(target, 'list');
+    let card = cardOptions.getDiv(target, 'card');
+    // Get position of list and card
+    let listPosition = list.getBoundingClientRect();
+    let cardPosition = card.getBoundingClientRect();
+    let cardOptionsContainer = document.getElementById('card-options-container');
+    cardOptionsContainer.classList.toggle('element-invisible');
+    let labelsContainer = document.getElementById('labels-container');
+    if (!labelsContainer.classList.contains('element-invisible')) {
+      labelsContainer.classList.toggle('element-invisible');
+    }
+    // Set card options container to be flush with right edge of list
+    cardOptionsContainer.style.left = listPosition.left + list.offsetWidth + "px";
+    // Set card options container to be flush with top of card
+    cardOptionsContainer.style.top = cardPosition.bottom - card.offsetHeight -7 + "px";
+
+  },
+// *************** SHOW X OPTION ***************
+  showLabels: function(event) {
+    let labelsContainer = document.getElementById('labels-container');
+    labelsContainer.classList.toggle('element-invisible');
+    // labelsContainer.style.left = event.target.getBoundingClientRect().left;
+  },
+
+// *************** ADD MEMBER OPTION ***************
+// *************** ADD/CHANGE LABEL ***************
+  changeLabel: function(event, labelColor) {
+    // NEXT STEP: Must access each unique card with a unique ID. Then, can set an individual labelArr for each card.
+    let card = this.currentCard;
+      //check if color is already displayed (i.e. in the array)
+    let currentLabels = card.getElementsByClassName('card-label-tile');
+    if (labelColor in currentLabels) {
+      card.removeChild(document.getElementById(labelColor));
+      // labelArr.splice(this.card.labelArr.indexOf(labelColor),1);
+    }
+      // if color not already displayed, dispaly it
+    else {
+      //create new HTML element to display color label
+      let label = document.createElement('div');
+      label.classList.add('card-label-tile');
+      label.id = labelColor;
+      label.style.backgroundColor = labelColor;
+      // add new element (color label) to card
+      card.appendChild(label);
+    }
+  },
+
+// *************** ADD CHECKLIST OPTION ***************
+  addChecklist: function() {
+
+  },
+// *************** ADD DUE DATE OPTION ***************
+  addDueDate: function() {
+
   }
 }

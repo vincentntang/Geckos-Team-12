@@ -1,4 +1,14 @@
 
+/* #sample-card {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+  width: 20%;
+}
+#sample-pen {
+  z-index: 50;
+} */
+
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Open Sans', sans-serif;
@@ -82,7 +92,6 @@ body {
 }
 
 /*************** ADD LISTS ***************/
-
 .work-board {
   background-color: transparent;
   border-radius: 5px;
@@ -330,3 +339,76 @@ a#show-list-form span:first-child {
 a#show-list-form span:nth-child(2), a.show-card-form span:nth-child(2){
   display: none;   /* hides the 'Add another link' when window loads */
 } 
+
+.card-link-container a:hover {
+  background-color: rgba(131,140,145, 0.2);
+  background-color: rgba(214,218,220, 0.5);
+}
+
+/*************** CARD OPTIONS ***************/
+#card-options-container {
+  position: absolute;
+}
+
+.card-options-ul {
+  padding: 0;
+  margin: 0;
+}
+
+.card-options-ul li {
+  list-style: none;
+  margin: 7px 0;
+}
+
+.card-options-ul a {
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-size: inherit;
+}
+
+/* Label container */
+#labels-container {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  z-index: 100;
+  bottom: 0;
+  position: absolute;
+}
+
+.label-tile {
+  display: block;
+  width: 180px;
+  height: 30px;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+
+.card-label-tile {
+  margin: 5px;
+  display: block;
+  width: 60px;
+  height: 10px;
+  border-radius: 10px;
+}
+
+
+/*************** OVERLAY MODAL ***************/
+/* Label Option */
+#overlay-container {
+  border: 2px solid black;
+  position: absolute;
+  margin: 20px auto;
+  height: 70%;
+  width: 70%;
+  left: 15%;
+  bottom: 15%;
+  z-index: 100;
+}
+
+.overlay-opacity {
+  opacity: 0.3;
+}
