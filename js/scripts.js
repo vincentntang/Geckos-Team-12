@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
   checkForBackground();
 };
 // *************** SLIDEOUT MENU SCRIPT ***************
@@ -29,26 +29,26 @@ const backgroundImages = [
 
 let menu = {
   // Toggle menu from view (slide into or out of view)
-  toggleMenuContainer: function() {
+  toggleMenuContainer: function () {
     document.getElementById('menu-container').classList.toggle("element-invisible");
     document.getElementById('show-menu-link').classList.toggle("element-invisible");
   },
   // Show or hide main menu
-  toggleMainMenu: function() {
+  toggleMainMenu: function () {
     //hide or show main menu
     document.getElementById('main-menu').classList.toggle("element-invisible");
     document.getElementById('main-menu-header').classList.toggle("element-invisible");
   },
   //hide all pages (before showing selected page)
-  hideAllPages: function() {
+  hideAllPages: function () {
     for (let key in headers) {
       if (document.getElementById(key).classList.contains('element-invisible') !== true) {
-      document.getElementById(key).classList.toggle('element-invisible');
+        document.getElementById(key).classList.toggle('element-invisible');
       }
     }
   },
   // Show or hide a specific page (page id passed as argument when function called from HTML)
-  togglePage: function(id) {
+  togglePage: function (id) {
     // if (document.getElementById(headers.colors).classList.contains('element-invisible') === true || document.getElementById(headers.photos).classList.contains('element-invisible') === true) {
     // }
     //hide main menu and all pages
@@ -62,25 +62,25 @@ let menu = {
     document.getElementById(id).classList.toggle("element-invisible");
   },
   // Change background color
-  changeBackground: function(background) {
+  changeBackground: function (background) {
     localStorage.setItem('background', background);
     if (background.startsWith('rgb')) {
       document.body.style.background = background;
     }
     else {
-      document.body.style.background = "url("+ background +")";
+      document.body.style.background = "url(" + background + ")";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundRepeat = "no-repeat";
     }
     menu.changeBackgroundIcon(background);
   },
-  changeBackgroundIcon: function(background) {
+  changeBackgroundIcon: function (background) {
     let backgroundIcon = document.getElementById('background-menu-icon');
     if (background.startsWith('rgb')) {
       backgroundIcon.style.background = background;
     }
     else {
-      backgroundIcon.style.background = "url("+ background +")";
+      backgroundIcon.style.background = "url(" + background + ")";
     }
   }
 };
@@ -90,6 +90,9 @@ let menu = {
 // add new list submit eventlistener
 document.getElementById("add-list-form").addEventListener("submit", addList);
 
+//Declaring index
+let listIndex = 0;
+let countCard = 0;
 function addList(e) {
   e.preventDefault();
   const input = document.getElementById("list-name");
@@ -99,10 +102,12 @@ function addList(e) {
     return;
   }
 
+  // create list
   const list = document.createElement('div');
   list.setAttribute('class', 'list');
   list.innerHTML =
-    `<div class="list-heading" >
+    `<div class="list-container">
+    <div class="list-heading" >
       <h3 contenteditable="true">` + name + `</h3>
     <div class= "ellipsis"><a href="#">&#8230;</a></div>
     </div>
@@ -111,17 +116,26 @@ function addList(e) {
           <textarea placeholder="Enter a title for this card..."></textarea>
           <div>
           <input type="submit" value="Add Card">
-          <input type="button" value="&#88;">
+          <input type="button" value="&#88;" onclick="hideSHowForm(this,'add-item-form', 'show-card-form', ` + listIndex + `);">
           <div class= "ellipsis"><a href="#">&#8230;</a></div>
           </div>
         </form>
+      </div>
+      <div class="link-wrapper">
+      <a href="#" class="show-card-form" onclick="hideSHowForm(this,'add-item-form', 'show-card-form', ` + listIndex + `);">
+      <span class="placeholder"><i class="fas fa-plus"></i> Add a card</span>
+      <span class="placeholder"><i class="fas fa-plus"></i> Add another card</span>
+    </a>
+    </div>
       </div>`;
 
-  document.getElementById("list-container").appendChild(list);
+  //Increasing index
+  listIndex++
+  document.getElementById("list-wrapper").appendChild(list);
 }
 
 // add new item submit eventlistener
-document.addEventListener('submit', function(e) {
+document.addEventListener('submit', function (e) {
   if (e.target.matches('.add-item-form')) {
     e.preventDefault();
     const textarea = e.target.getElementsByTagName('textarea')[0];
@@ -141,28 +155,51 @@ document.addEventListener('submit', function(e) {
     card.appendChild(cardItem)
     card.appendChild(pen);
     e.target.parentElement.prepend(card);
+    countCard++;
   }
 });
 
-spans = document.getElementsByClassName("placeholder");
+let spans = document.getElementsByClassName("placeholder");
 //toggle between 'add a list' and 'add another list' links
-window.onload = function(){
-   spans[1].style.display='none';
-   document.forms[0].style.display='none';
+window.onload = function () {
+  spans[1].style.display = 'none';
+  document.forms[0].style.display = 'none';
 };
 
 let clicked = 0;
 //toggle between links and 'add-list-form'
-function toggleDiv(divId1, divId2){
+function toggleDiv(formId, linkId) {
   clicked++;
-  if(document.getElementById( divId1 ).style.display == 'block'){
-    document.getElementById( divId1 ).style.display = 'none';
-    document.getElementById( divId2 ).style.display = 'block';
-  }else{	
-    document.getElementById( divId2 ).style.display = 'none';
-    document.getElementById( divId1 ).style.display = 'block'
-  }if(clicked > 0) {
-    spans[0].style.display='none';
-    spans[1].style.display='block';
+  if (document.getElementById(formId).style.display == 'block') {
+    document.getElementById(formId).style.display = 'none';
+    document.getElementById(linkId).style.display = 'block';
+  } else {
+    document.getElementById(linkId).style.display = 'none';
+    document.getElementById(formId).style.display = 'block'
+  } if (clicked > 0) {
+    spans[0].style.display = 'none';
+    spans[1].style.display = 'block';
+  }
+}
+
+document.getElementsByClassName('')
+
+//toggle between links and 'add-item-form'
+function hideSHowForm(curr, form, link, id) {
+  //show only one 'add-item-form' Form on screen and hide other form
+  let allCard = document.querySelectorAll('.add-item-form');
+  allCard.forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.show-card-form').forEach(a => a.style.display = 'block');
+  curr.parentNode.parentNode.style.display = 'block';
+
+  if (document.getElementsByClassName(form)[id].style.display == 'block') {
+    document.getElementsByClassName(form)[id].style.display = 'none';
+    document.getElementsByClassName(link)[id].style.display = 'block';
+  } else {
+    document.getElementsByClassName(link)[id].style.display = 'none';
+    document.getElementsByClassName(form)[id].style.display = 'block'
+  } if (countCard > 0) {
+    spans[0].style.display = 'none';
+    spans[1].style.display = 'block';
   }
 }

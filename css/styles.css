@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Open Sans', sans-serif;
@@ -88,7 +89,8 @@ body {
   display: flex;
   flex-direction: row;
 }
-#list-container {
+
+#list-wrapper {
   margin: 8px 5px 10px 0px;
   padding: 2px;
   border-radius: 4px;
@@ -99,23 +101,28 @@ body {
 }
 
 .list {
-  padding: 4px 8px;
+  background: transparent;
+}
+
+.list-container {
+  /* padding: 4px 8px; */
   border-radius: 4px;
-  width: 256px;
+  width: 276px;
   background-color: rgb(226,228,230);
   border: none;
   margin: 2px 5px;
 }
+
 .list-heading {
   display: flex;
   flex-direction: row;
-  padding-bottom: 3px;
+  padding: 4px 8px; 
   margin-bottom: 5px;
 }
 
 .list .list-heading h3 {
-  margin: 2px 3px 0px 0px;
-  width: 82%;
+  margin: 2px 24px 0px 3px;
+  width: 75%;
   border-radius: 4px;
   outline:none;
   font-size: 14px;
@@ -130,7 +137,7 @@ body {
 
 .ellipsis {
   /* display: inline-block; */
-  width: 30px;
+  width: 33px;
   text-align: center;
   border-radius: 4px;
   margin: 0px 1px 0px 0px;
@@ -138,12 +145,9 @@ body {
   float: right;
 }
 
-.ellipsis:hover {
-  background-color: rgba(131, 140, 145, 0.2)
-}
-
 form.add-item-form .ellipsis{
-  margin-top: 5px;
+  margin-top: 8px;
+  margin-right: 8px;
   padding-bottom: 5px;
 }
 
@@ -159,11 +163,12 @@ a {
 form#add-list-form { 
   margin-top: 12px;
   width: 270px;
+  /* transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out; */
 }
 
 .form-inner-container {
   background-color: rgb(226,228,230);
-  padding: 5px 5px 0px 5px;
+  padding: 6px;
   border-radius: 4px;
 }
 
@@ -192,8 +197,16 @@ input[type=submit] {
   box-shadow: 0 1px 0 0 rgb(63, 111, 33);
   border: none;
   border-radius: 4px;
-  margin: 10px 0;
-  
+  margin-top: 10px;
+  margin-top: 10px 0px 0 10px;
+}
+
+form.add-item-form div input[type=submit] {
+  margin-left: 10px;
+}
+
+input[type=submit]:hover {
+  background-color: rgb(71, 138, 53);
 }
 
 input[type=button]{
@@ -211,13 +224,16 @@ input[type=button]:hover{
 
 form.add-item-form {
   margin-top: 20px;
+      margin-bottom: -15px;
 }
 
 form.add-item-form textarea {
   outline: none;
-  width: 92%;
+  width: 87%;
   height: 50px;
   max-height: 120px;
+  margin-top: -5px;
+  margin-left: 8px;
   padding: 10px;
   font-size: 14px;
   box-shadow: 0px 1px 0px 0 rgba(1, 1, 1, 0.2);
@@ -226,11 +242,11 @@ form.add-item-form textarea {
   display: block;
   word-wrap: break-word;
   resize: none;
-  margin-top: -5px;
 }
 
 .card {
-  width: 92%;
+  width: 87%;
+  margin-left: 8px;
   box-shadow: 0px 1px 0px 0 rgba(1, 1, 1, 0.2);
   border: none;
   border-radius: 3px;
@@ -251,13 +267,11 @@ form.add-item-form textarea {
   padding: 0px;
   margin: 6px 0;
   font-size: 14px;
-  z-index: 1;
 }
 
 .card a{
   position: absolute;
   margin-left: 220px;
-  z-index: 2;
 }
 
 .fa-pen {
@@ -270,22 +284,49 @@ form.add-item-form textarea {
   background-color: rgb(226,228,230);
 }
 
-#add-list-form {
+#add-list-form, .add-item-form {
   display: none;
 }
 
-a#show-list-form {
+.link-wrapper {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+a#show-list-form, a.show-card-form {
   text-decoration: none;
+  border-radius: 4px;
   color: rgb(255, 255, 255);
   background-color: rgba(1, 1, 1, 0.3);
-  padding: 11px 15px 11px 20px;
+  padding: 10px 15px 10px 20px;
   width: 242px;
   text-align: left;
-  border-radius: 4px;
   font-size: 14px;
   height: 17px;
 }
 
+a.show-card-form {
+  border-top-right-radius: 0px; 
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: transparent;
+  display: inline-block;
+  width: 242px;
+  color: rgb(131, 140, 145);
+}
+
+a.show-card-form:hover, .ellipsis:hover {
+  background-color: rgba(131, 140, 145, 0.2)
+}
 a#show-list-form:hover {
   background-color: rgba(1, 1, 1, 0.4);
 }
+
+a#show-list-form span:first-child {
+  padding-right: 172px;
+}
+
+a#show-list-form span:nth-child(2), a.show-card-form span:nth-child(2){
+  display: none;   /* hides the 'Add another link' when window loads */
+} 
